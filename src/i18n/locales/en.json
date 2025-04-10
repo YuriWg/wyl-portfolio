@@ -1,0 +1,84 @@
+{
+  "header": {
+    "title": "DataViz Portfolio",
+    "about": "About",
+    "blog": "Blog"
+  },
+  "about": {
+    "backToHome": "Back to Home",
+    "name": "Your Name",
+    "title": "Data Visualization Designer & Developer",
+    "aboutMe": "About Me",
+    "bio": "I am a designer and developer focused on data visualization and interactive storytelling. I am passionate about transforming complex data into intuitive, engaging visual experiences.",
+    "skills": "Skills",
+    "skill1": "Data Visualization Design",
+    "skill2": "Tableau, D3.js, Python",
+    "skill3": "Interactive Storytelling",
+    "skill4": "Data Analysis & Processing",
+    "experience": "Experience",
+    "job1": {
+      "title": "Senior Data Visualization Designer",
+      "company": "Company Name",
+      "period": "2020 - Present",
+      "description": "Responsible for designing and developing interactive data visualizations, providing data insights and storytelling solutions for clients."
+    },
+    "job2": {
+      "title": "Data Analyst",
+      "company": "Company Name",
+      "period": "2018 - 2020",
+      "description": "Responsible for data collection, cleaning, and analysis to support business decisions."
+    },
+    "education": "Education",
+    "education1": {
+      "degree": "Master of Data Science",
+      "school": "University Name",
+      "period": "2016 - 2018"
+    }
+  },
+  "blog": {
+    "backToHome": "Back to Home",
+    "title": "Blog",
+    "searchPlaceholder": "Search articles...",
+    "allTags": "All Tags",
+    "readMore": "Read More",
+    "noResults": "No matching articles found"
+  },
+  "hero": {
+    "title": "Data Stories That Matter",
+    "subtitle": "Exploring the world through data visualization, interactive storytelling, and knowledge management"
+  },
+  "categories": {
+    "all": "All",
+    "climate": "Climate",
+    "society": "Society",
+    "culture": "Culture",
+    "templates": "Templates"
+  },
+  "types": {
+    "all": "All Tools",
+    "tableau": "TABLEAU",
+    "d3": "D3",
+    "python": "PYTHON",
+    "obsidian": "OBSIDIAN"
+  },
+  "project": {
+    "downloadTemplate": "Download Template",
+    "viewVisualization": "View Visualization",
+    "backToHome": "Back to Home",
+    "notFound": "Project Not Found",
+    "visualization": "Visualization",
+    "resources": "Resources",
+    "relatedLinks": "Related Links",
+    "client": "CLIENT",
+    "link": "LINK",
+    "categories": "CATEGORIES",
+    "tools": "TOOLS",
+    "data": "DATA",
+    "publishDate": "PUBLISH DATE",
+    "githubRepo": "GitHub Repository",
+    "viewOriginal": "View Original Work"
+  },
+  "footer": {
+    "copyright": "© 2025 DataViz Portfolio. All rights reserved."
+  }
+}

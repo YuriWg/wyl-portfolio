@@ -1,0 +1,599 @@
+/* 以下是清理后的文件，删除了重复的类定义 */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* 将幼圆字体更换为微软雅黑 */
+    font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    @apply antialiased;
+    background-color: #f8f9fa;
+    /* 替换为更有趣的手绘背景 */
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%239C92AC' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffacac' fill-opacity='0.05'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234299e1' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    /* 添加一些手绘风格的装饰元素 */
+    position: relative;
+  }
+  
+  /* 添加手绘风格的装饰元素 */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 15%;
+    left: 2%;
+    width: 100px;
+    height: 100px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23ddd' stroke-width='1' %3E%3Cpath d='M20,50 C20,50 35,20 50,20 C65,20 80,50 80,50 C80,50 65,80 50,80 C35,80 20,50 20,50 Z' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='50' r='5' fill='%23ddd'/%3E%3C/svg%3E");
+    opacity: 0.3;
+    z-index: -1;
+    transform: rotate(15deg);
+  }
+  
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    width: 150px;
+    height: 150px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23ddd' stroke-width='1'%3E%3Cpath d='M30,30 L70,30 L70,70 L30,70 Z' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M40,40 L60,40 L60,60 L40,60 Z' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    opacity: 0.2;
+    z-index: -1;
+    transform: rotate(-10deg);
+  }
+  
+  /* 添加手绘风格的装饰线条 */
+  .hero-section {
+    position: relative;
+  }
+  
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 3' preserveAspectRatio='none'%3E%3Cpath d='M0,1 C20,2 30,0 50,1 C70,2 80,0 100,1' fill='none' stroke='%23000' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.2;
+  }
+  
+  /* 添加随机的手绘小点点背景 */
+  .projects-section {
+    position: relative;
+  }
+  
+  .projects-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M0 0h1v1H0V0zm3 3h1v1H3V3zm6 6h1v1H9V9zm6 6h1v1h-1v-1zm-6 0h1v1H9v-1zM6 6h1v1H6V6zm9 0h1v1h-1V6zm-6 3h1v1H9V9zm6 0h1v1h-1V9zM6 9h1v1H6V9zm0 6h1v1H6v-1zm9-6h1v1h-1V9zm0-3h1v1h-1V6zM3 9h1v1H3V9zm0 3h1v1H3v-1zm3 3h1v1H6v-1zm3-3h1v1H9v-1zm3 0h1v1h-1v-1zm3 0h1v1h-1v-1z'/%3E%3C/g%3E%3C/svg%3E");
+    z-index: -1;
+  }
+  
+  /* 添加手绘风格的页脚装饰 */
+  footer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 5' preserveAspectRatio='none'%3E%3Cpath d='M0,2 C10,0 20,4 30,2 C40,0 50,4 60,2 C70,0 80,4 90,2 C95,0 100,2 100,2' fill='none' stroke='%23000' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.1;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+/* 卡通贴纸风格图标效果 - 随机形状 */
+/* 完全重写 sticker-icon 样式 */
+.sticker-icon {
+  filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s ease;
+  border: none !important;
+  background-color: transparent !important;
+  padding: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  transform: none;
+}
+
+/* 确保伪元素不会显示 */
+.sticker-icon::after,
+.sticker-icon::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* 为不同位置的图标添加随机旋转角度 */
+.sticker-nav-item:nth-child(7n+1) .sticker-icon {
+  transform: rotate(-5deg);
+}
+
+.sticker-nav-item:nth-child(7n+2) .sticker-icon {
+  transform: rotate(3deg);
+}
+
+.sticker-nav-item:nth-child(7n+3) .sticker-icon {
+  transform: rotate(-3deg);
+}
+
+.sticker-nav-item:nth-child(7n+4) .sticker-icon {
+  transform: rotate(4deg);
+}
+
+.sticker-nav-item:nth-child(7n+5) .sticker-icon {
+  transform: rotate(-1deg);
+}
+
+.sticker-nav-item:nth-child(7n+6) .sticker-icon {
+  transform: rotate(-4deg);
+}
+
+.sticker-nav-item:nth-child(7n+7) .sticker-icon {
+  transform: rotate(6deg);
+}
+
+/* 调整悬停效果 */
+.sticker-icon:hover {
+  transform: rotate(1deg) scale(1.2) !important;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25));
+}
+
+/* 调整图标大小和颜色 */
+.sticker-icon svg {
+  width: 24px;
+  height: 24px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.sticker-icon:hover svg {
+  color: #000;
+}
+
+.sticker-icon::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid #000;
+  z-index: -1;
+  background-color: white;
+  border-radius: inherit; /* 继承父元素的边框半径 */
+}
+
+.sticker-icon:hover {
+  transform: rotate(3deg) scale(1.1);
+  filter: drop-shadow(3px 5px 0px rgba(0, 0, 0, 0.25));
+}
+
+/* 文本样式 */
+.sticker-text {
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  /* 移除阴影、边框和背景色 */
+  filter: none;
+  background-color: transparent;
+  border: none;
+  display: inline-block;
+}
+
+.sticker-text-small {
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-weight: bold;
+  filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.2));
+  background-color: white;
+  padding: 2px 6px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  display: inline-block;
+  transform: rotate(-1deg);
+  font-size: 0.9rem;
+}
+
+.sticker-title {
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  /* 移除阴影、边框和背景色 */
+  filter: none;
+  background-color: transparent;
+  border: none;
+  display: inline-block;
+  transform: none;
+}
+
+.sticker-hero-title {
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  /* 移除阴影、边框和背景色 */
+  filter: none;
+  background-color: transparent;
+  border: none;
+  transform: none;
+  padding: 10px 20px;
+}
+
+.sticker-hero-subtitle {
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-size: 1.2rem;
+  /* 移除阴影、边框和背景色 */
+  filter: none;
+  background-color: transparent;
+  border: none;
+  transform: none;
+  padding: 8px 16px;
+}
+
+/* 导航项目样式 */
+.sticker-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.sticker-nav-item:hover {
+  transform: translateY(-2px);
+}
+
+/* 添加工具提示效果 */
+.sticker-nav-item::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  /*background-color: white;*/
+  color: black;
+  padding: 4px 8px;
+  /* 移除边框 */
+  border: none;
+  border-radius: 8px;
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-weight: bold;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+  filter: none; /* 移除阴影效果 */
+  z-index: 10;
+}
+
+.sticker-text-small {
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-weight: bold;
+  filter: none; /* 移除阴影效果 */
+  /*background-color: white;*/
+  padding: 2px 6px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  display: inline-block;
+  transform: rotate(-1deg);
+  font-size: 0.9rem;
+}
+
+.sticker-nav-item:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  bottom: -35px;
+}
+
+/* 按钮样式 */
+.sticker-button {
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  border: 2px solid #000;
+  border-radius: 30px;
+  padding: 4px 16px;
+  transform: rotate(-1deg);
+  transition: all 0.3s ease;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2));
+}
+
+.sticker-button:hover {
+  transform: rotate(1deg) scale(1.05);
+  filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.25));
+}
+
+.sticker-button-active {
+  background-color: black;
+  color: white;
+  transform: rotate(1deg) scale(1.05);
+  filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.25));
+}
+
+/* 替代按钮样式 - 橙黄色 */
+.sticker-button-alt {
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  border: 2px solid #F59E0B; /* 修改为橙黄色 */
+  border-radius: 30px;
+  padding: 4px 16px;
+  transform: rotate(1deg);
+  transition: all 0.3s ease;
+  filter: drop-shadow(2px 2px 0px rgba(245, 158, 11, 0.3)); /* 修改阴影颜色 */
+}
+
+.sticker-button-alt:hover {
+  transform: rotate(-1deg) scale(1.05);
+  filter: drop-shadow(3px 3px 0px rgba(245, 158, 11, 0.35)); /* 修改阴影颜色 */
+}
+
+.sticker-button-alt-active {
+  background-color: #F59E0B; /* 修改为橙黄色 */
+  color: white;
+  transform: rotate(-1deg) scale(1.05);
+  filter: drop-shadow(3px 3px 0px rgba(245, 158, 11, 0.35)); /* 修改阴影颜色 */
+}
+
+/* 卡片样式 */
+.sticker-card {
+  background-color: white;
+  border: 3px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.2));
+  position: relative;
+  height: 300px; /* 添加固定高度 */
+}
+
+/* 卡片内容区域样式 */
+.sticker-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 16px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  border-top: 2px solid #000;
+}
+
+/* 悬停时显示内容 */
+.sticker-card:hover .sticker-card-content {
+  transform: translateY(0);
+}
+
+/* 卡片图片容器 */
+.sticker-card-image-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 卡片图片 */
+.sticker-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* 悬停时图片效果 */
+.sticker-card:hover .sticker-card-image {
+  transform: scale(1.05);
+}
+
+/* 使用不同的选择器来实现更随机的旋转效果 */
+.sticker-card:nth-child(7n+1) {
+  transform: rotate(-2deg);
+}
+
+.sticker-card:nth-child(7n+2) {
+  transform: rotate(1.5deg);
+}
+
+.sticker-card:nth-child(7n+3) {
+  transform: rotate(-1deg);
+}
+
+.sticker-card:nth-child(7n+4) {
+  transform: rotate(0.5deg);
+}
+
+.sticker-card:nth-child(7n+5) {
+  transform: rotate(-1.5deg);
+}
+
+.sticker-card:nth-child(7n+6) {
+  transform: rotate(2deg);
+}
+
+.sticker-card:nth-child(7n+7) {
+  transform: rotate(-0.5deg);
+}
+
+/* 悬停效果也做相应调整，使其更加随机 */
+.sticker-card:nth-child(7n+1):hover {
+  transform: rotate(1deg) translateY(-5px);
+  filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
+}
+
+.sticker-card:nth-child(7n+2):hover {
+  transform: rotate(-1.5deg) translateY(-5px);
+  filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
+}
+
+.sticker-card:nth-child(7n+3):hover {
+  transform: rotate(2deg) translateY(-5px);
+  filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
+}
+
+.sticker-card:nth-child(7n+4):hover {
+  transform: rotate(-0.5deg) translateY(-5px);
+  filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
+}
+
+.sticker-card:nth-child(7n+5):hover {
+  transform: rotate(1.5deg) translateY(-5px);
+  filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
+}
+
+.sticker-card:nth-child(7n+6):hover {
+  transform: rotate(-2deg) translateY(-5px);
+  filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
+}
+
+.sticker-card:nth-child(7n+7):hover {
+  transform: rotate(0.5deg) translateY(-5px);
+  filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
+}
+
+/* 手绘风格图标效果 */
+.hand-drawn-icon {
+  filter: url('#hand-drawn-filter');
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+}
+
+.hand-drawn-icon:hover {
+  transform: rotate(2deg) scale(1.1);
+}
+
+/* 使用简单的CSS替代SVG */
+.hand-drawn-decoration {
+  position: fixed;
+  z-index: -1;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.hand-drawn-star {
+  width: 0;
+  height: 0;
+  border-right: 50px solid transparent;
+  border-bottom: 35px solid #000;
+  border-left: 50px solid transparent;
+  top: 15%;
+  right: 10%;
+  transform: rotate(35deg);
+}
+
+.hand-drawn-star:before {
+  content: '';
+  position: absolute;
+  border-bottom: 40px solid #000;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  top: -22.5px;
+  left: -32.5px;
+  transform: rotate(-35deg);
+}
+
+.hand-drawn-star:after {
+  content: '';
+  position: absolute;
+  border-bottom: 35px solid #000;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  top: 3px;
+  left: -50px;
+  transform: rotate(-70deg);
+}
+
+.hand-drawn-circle {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #000;
+  border-radius: 50%;
+  bottom: 20%;
+  left: 8%;
+  transform: rotate(-10deg);
+}
+
+.hand-drawn-squiggle {
+  width: 150px;
+  height: 20px;
+  background: linear-gradient(45deg, transparent, transparent 49%, #000 49%, #000 51%, transparent 51%, transparent);
+  background-size: 20px 20px;
+  top: 40%;
+  right: 5%;
+  transform: rotate(-30deg);
+}
+
+.hand-drawn-cloud {
+  width: 130px;
+  height: 60px;
+  background: #000;
+  border-radius: 50px;
+  top: 10%;
+  left: 15%;
+  transform: rotate(5deg);
+  opacity: 0.1;
+}
+
+.hand-drawn-cloud:before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #000;
+  border-radius: 50%;
+  top: -20px;
+  left: 15px;
+}
+
+.hand-drawn-cloud:after {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: #000;
+  border-radius: 50%;
+  top: -30px;
+  right: 15px;
+}
+
+.hand-drawn-triangle {
+  width: 0;
+  height: 0;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-bottom: 120px solid #000;
+  bottom: 15%;
+  right: 15%;
+  transform: rotate(-5deg);
+  opacity: 0.1;
+}

@@ -1,0 +1,85 @@
+{
+  "header": {
+    "title": "数据可视化作品集",
+    "about": "关于我",
+    "blog": "博客"
+  },
+  "about": {
+    "backToHome": "返回首页",
+    "name": "你的名字",
+    "title": "数据可视化设计师 & 开发者",
+    "aboutMe": "关于我",
+    "bio": "我是一名专注于数据可视化和交互式故事叙述的设计师和开发者。我热衷于将复杂的数据转化为直观、引人入胜的视觉体验。",
+    "skills": "技能",
+    "skill1": "数据可视化设计",
+    "skill2": "Tableau, D3.js, Python",
+    "skill3": "交互式故事叙述",
+    "skill4": "数据分析与处理",
+    "experience": "工作经历",
+    "job1": {
+      "title": "高级数据可视化设计师",
+      "company": "某公司",
+      "period": "2020 - 至今",
+      "description": "负责设计和开发交互式数据可视化作品，为客户提供数据洞察和故事叙述解决方案。"
+    },
+    "job2": {
+      "title": "数据分析师",
+      "company": "某公司",
+      "period": "2018 - 2020",
+      "description": "负责数据收集、清洗和分析，为业务决策提供数据支持。"
+    },
+    "education": "教育背景",
+    "education1": {
+      "degree": "数据科学硕士",
+      "school": "某大学",
+      "period": "2016 - 2018"
+    }
+  },
+  "blog": {
+    "backToHome": "返回首页",
+    "title": "博客",
+    "searchPlaceholder": "搜索文章...",
+    "allTags": "所有标签",
+    "readMore": "阅读更多",
+    "noResults": "没有找到匹配的文章"
+  },
+  "hero": {
+    "title": "有意义的数据故事",
+    "subtitle": "通过数据可视化、交互式故事叙述和知识管理探索世界"
+  },
+  "categories": {
+    "all": "全部",
+    "climate": "气候",
+    "society": "社会",
+    "culture": "文化",
+    "templates": "模板"
+  },
+  "types": {
+    "all": "所有工具",
+    "tableau": "TABLEAU",
+    "d3": "D3",
+    "python": "PYTHON",
+    "obsidian": "OBSIDIAN"
+  },
+  "project": {
+    "downloadTemplate": "下载模板",
+    "viewVisualization": "查看可视化",
+    "backToHome": "返回首页",
+    "notFound": "未找到项目",
+    "visualization": "可视化",
+    "resources": "资源",
+    "relatedLinks": "相关链接",
+    "client": "客户",
+    "link": "链接",
+    "categories": "分类",
+    "tools": "工具",
+    "data": "数据",
+    "publishDate": "发布日期",
+    "githubRepo": "GitHub 仓库",
+    "viewOriginal": "查看原始作品",
+    "projectInfo": "项目信息"
+  },
+  "footer": {
+    "copyright": "© 2023 数据可视化作品集. 保留所有权利."
+  }
+}
