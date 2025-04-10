@@ -52,7 +52,8 @@
     "climate": "气候",
     "society": "社会",
     "culture": "文化",
-    "templates": "模板"
+    "templates": "模板",
+    "life": "生活" 
   },
   "types": {
     "all": "所有工具",

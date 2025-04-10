@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, Tag, BarChart2, FileText, ExternalLink, User, Database, Wrench } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import TableauEmbed from '../components/TableauEmbed';
-import MoodGardenEmbed from '../components/MoodGardenEmbed';
+import D3Embed from '../components/D3Embed';
 import { projects, Project } from '../data/projects';
 
 const ProjectDetail: React.FC = () => {
@@ -159,28 +159,28 @@ const ProjectDetail: React.FC = () => {
           <div className="mb-12">
             <h2 className="text-2xl font-bold mb-6">{t('project.visualization')}</h2>
             <div className="bg-white p-4 rounded-lg shadow-md overflow-hidden">
-              <div className="max-w-full overflow-x-auto">
-                <TableauEmbed
-                  vizId={project.tableauProps.vizId}
-                  width={project.tableauProps.width}
-                  height={project.tableauProps.height}
-                  vizName={project.tableauProps.vizName || ''}
-                  staticImageSrc={project.tableauProps.staticImageSrc || project.image}
-                />
-              </div>
+              <TableauEmbed
+                vizId={project.tableauProps.vizId}
+                width={project.tableauProps.width || '100%'}
+                height={project.tableauProps.height || '600px'}
+                vizName={project.tableauProps.vizName || ''}
+                staticImageSrc={project.tableauProps.staticImageSrc || ''}
+              />
             </div>
           </div>
         )}
 
-        {/* MoodGarden 可视化 */}
-        {project.moodGardenProps && (
+        {/* D3 可视化 */}
+        {project.d3Props && (
           <div className="mb-12">
             <h2 className="text-2xl font-bold mb-6">{t('project.visualization')}</h2>
             <div className="bg-white p-4 rounded-lg shadow-md overflow-hidden">
-              <MoodGardenEmbed
-                sourceUrl={project.moodGardenProps.sourceUrl}
-                width={project.moodGardenProps.width || '100%'}
-                height={project.moodGardenProps.height || '600px'}
+              <D3Embed
+                sourceUrl={project.d3Props.sourceUrl}
+                previewImageUrl={project.d3Props.previewImageUrl}
+                width={project.d3Props.width || '100%'}
+                height={project.d3Props.height || '1400px'}
+                isEmbeddable={project.d3Props.isEmbeddable}
               />
             </div>
           </div>

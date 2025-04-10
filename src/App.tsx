@@ -7,8 +7,6 @@ import LanguageSwitch from './components/LanguageSwitch';
 import { projects, Project } from './data/projects';
 // 添加 Ionicons 图标导入
 import { IoPerson, IoBook, IoBarChart, IoHeart, IoLogoGithub, IoMail } from 'react-icons/io5';
-import logoImage from './assets/wyl-logo.png';
-
 
 function App() {
   const { t } = useTranslation();
@@ -241,7 +239,7 @@ function App() {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2 sticker-nav-item">
               {/*<div className="sticker-icon">*/}       
-                <img src={logoImage} alt="Logo" className="w-28  transform -rotate-6 hover:rotate-0 transition-transform duration-300 " 
+                <img src="/DataViz-Portfolio/wyl-logo.png" alt="Logo" className="w-28  transform -rotate-6 hover:rotate-0 transition-transform duration-300 " 
                   style={{
                     filter: 'drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2))',
                     transition: 'all 0.3s ease'

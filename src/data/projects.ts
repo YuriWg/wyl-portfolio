@@ -6,11 +6,13 @@ export interface Project {
   description: string;
   image: string;
   category: string;
-  type: 'tableau' | 'd3' | 'python' | 'obsidian' | 'other' | 'moodGarden';
+  // 移除 'moodGarden' 作为单独类型
+  type: 'tableau' | 'd3' | 'python' | 'obsidian' | 'other';
   publishDate: string;
   link?: string;
   linkText?: string;
   downloadUrl?: string;
+  
   tableauProps?: {
     vizId: string;
     width: string;
@@ -18,11 +20,13 @@ export interface Project {
     vizName?: string;
     staticImageSrc?: string;
   };
-  // 添加 MoodGarden 专属配置
-  moodGardenProps?: {
+
+  d3Props?: {
     sourceUrl: string;
+    previewImageUrl?: string;
     width?: string;
     height?: string;
+    isEmbeddable?: boolean; // 是否可以嵌入iframe
   };
   client?: string;
   dataSource?: string;
@@ -74,7 +78,13 @@ export const projects: Project[] = [
     publishDate: "2022-03",
     client: "Climate Research Institute",
     dataSource: "Global Climate Database",
-    longDescription: "This visualization explores global temperature changes over the past century, highlighting trends and patterns in different regions of the world. Using D3.js, it creates an interactive experience that allows users to explore the data in depth."
+    longDescription: "This visualization explores global temperature changes over the past century, highlighting trends and patterns in different regions of the world. Using D3.js, it creates an interactive experience that allows users to explore the data in depth.",
+    d3Props: {
+      sourceUrl: "https://github.com/yourgithub/global-temp-viz", // 假设的 GitHub 链接
+      width: "100%",
+      height: "600px",
+      isEmbeddable: false
+    }
   },
   {
     id: 3,
@@ -193,10 +203,10 @@ export const projects: Project[] = [
     id: 11,
     title: "心情花园可视化",
     description: "基于D3.js的互动式数据可视化，将每日心情数据以花朵形式展现，支持多种布局和主题色。",
-    image: "/images/projects/mood-garden-preview.jpg", // 项目预览图，需要准备
-    category: "life", // 或选择其他更合适的分类
+    image: "/DataViz-Portfolio/images/projects/mood-garden-preview.jpg", // 确保路径正确
+    category: "life",
     type: "d3", // 使用 d3 类型
-    publishDate: "2023-08", // 实际发布日期
+    publishDate: "2023-08",
     link: "https://github.com/YuriWg/mood-garden-viz",
     linkText: "GitHub 代码库",
     client: "Self-initiated",
@@ -205,11 +215,13 @@ export const projects: Project[] = [
     每个花朵代表一天的心情记录，花朵的大小和颜色反映心情指数的高低，支持随机布局和日历布局两种查看模式，并提供多种主题色切换功能。
     该项目不仅实现了数据的可视化展示，还注重用户体验和交互性，可以帮助用户更好地理解和分析自己的情绪变化趋势。`,
     
-    // 如果想将来嵌入到网页中，可以添加这个配置
-    moodGardenProps: {
-      sourceUrl: "https://github.com/YuriWg/mood-garden-viz",
+    // 使用统一的 d3Props 替代专属配置
+    d3Props: {
+      sourceUrl: "https://yuriwg.github.io/mood-garden-viz/", 
+      previewImageUrl: "/DataViz-Portfolio/images/projects/mood-garden-preview.jpg",
       width: "100%",
-      height: "auto"
+      height: "1400px",
+      isEmbeddable: true // 目前尚未部署到可嵌入的位置
     }
   }
 ];
