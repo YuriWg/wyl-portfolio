@@ -239,7 +239,7 @@ function App() {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2 sticker-nav-item">
               {/*<div className="sticker-icon">*/}       
-                <img src="/wyl-logo.png" alt="Logo" className="w-28  transform -rotate-6 hover:rotate-0 transition-transform duration-300 " 
+                <img src="wyl-logo.png" alt="Logo" className="w-28  transform -rotate-6 hover:rotate-0 transition-transform duration-300 " 
                   style={{
                     filter: 'drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2))',
                     transition: 'all 0.3s ease'

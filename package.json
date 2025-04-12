@@ -7,14 +7,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:github": "vite build --base=/wyl-portfolio/",
+    "build:github": "vite build --mode github",
     "build:cloudflare": "vite build",
     "deploy:github": "npm run build:github && gh-pages -d dist",
     "deploy:cloudflare": "npm run build:cloudflare",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build:github && gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
@@ -39,6 +39,7 @@
     "@eslint/js": "^9.9.1",
     "@types/dompurify": "^3.0.5",
     "@types/marked": "^5.0.2",
+    "@types/node": "^22.14.1",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
     "@typescript-eslint/eslint-plugin": "^8.29.1",

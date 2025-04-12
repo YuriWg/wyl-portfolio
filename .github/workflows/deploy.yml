@@ -24,8 +24,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build for GitHub Pages 
-        run: npm run build -- --base=/wyl-portfolio/
+      - name: Build for GitHub
+        run: npm run build --mode github
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
