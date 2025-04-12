@@ -42,4 +42,3 @@ jobs:
           projectName: dataviz-portfolio
           directory: dist  # 改为 dist
           branch: master
-          github_token: ${{ secrets.GITHUB_TOKEN }}
