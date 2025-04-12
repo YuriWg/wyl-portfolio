@@ -24,10 +24,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build for GitHub Pages # 修改步骤名称以示区分
-        # 在执行 build 命令时，通过命令行参数覆盖 vite.config.ts 中的 base 设置
-        # 使用 `-- --base=/DataViz-Portfolio/` 将参数传递给 vite build
-        run: npm run build -- --base=/DataViz-Portfolio/
+      - name: Build for GitHub Pages 
+        run: npm run build -- --base=/wyl-portfolio/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -36,10 +34,4 @@ jobs:
           publish_dir: ./dist
           force_orphan: true
 
-      # - name: Deploy to Cloudflare Pages # 移除 Cloudflare 部署步骤
-        # uses: cloudflare/pages-action@v1
-        # with:
-          # apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          # accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # projectName: dataviz-portfolio
-          # directory: dist
+

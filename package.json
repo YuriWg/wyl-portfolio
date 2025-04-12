@@ -1,9 +1,9 @@
 {
-  "name": "dataviz-portfolio",
+  "name": "wyl-portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://yuriwg.github.io/DataViz-Portfolio",
+  "homepage": "https://yuriwg.github.io/wyl-portfolio",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
