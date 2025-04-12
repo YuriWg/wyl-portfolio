@@ -27,11 +27,9 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
-        # 不需要额外的 --base 参数，因为已在 vite.config.js 中设置
-
-      - name: Create .nojekyll file
-        run: touch dist/.nojekyll
+        run: |
+          CF_PAGES=false npm run build
+          touch dist/.nojekyll
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
