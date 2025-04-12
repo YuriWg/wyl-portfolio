@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages and Cloudflare Pages
+name: Deploy to GitHub Pages # 只部署到 GitHub Pages
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 permissions:
-  contents: write
+  contents: write # GitHub Pages 需要写入仓库（gh-pages 分支）
   pages: write
   id-token: write
 
@@ -15,29 +15,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          
+
       - name: Install Dependencies
         run: npm install
-        
+
       - name: Build
-        run: npm run build
-        
+        run: npm run build # 构建仍然需要，为了部署到 GitHub Pages
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # 改为 dist
+          publish_dir: ./dist # 确认输出目录是 dist
           force_orphan: true
-          
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: dataviz-portfolio             # 确认 Cloudflare 上项目名精确匹配
-          directory: dist                           # 确认构建输出是 dist
+
+      # - name: Deploy to Cloudflare Pages # 移除 Cloudflare 部署步骤
+        # uses: cloudflare/pages-action@v1
+        # with:
+          # apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # projectName: dataviz-portfolio
+          # directory: dist
