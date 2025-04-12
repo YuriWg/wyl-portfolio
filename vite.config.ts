@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   // base: '/DataViz-Portfolio/', // 注释掉或删除这行
-  base: './', // 或者使用 '/', 确保 Cloudflare Pages 部署在根目录
+  base: '/', // 或者使用 '/', 确保 Cloudflare Pages 部署在根目录
   server: {
     headers: {
       'Content-Security-Policy': "frame-src 'self' https://public.tableau.com https://yuriwg.github.io/;",
