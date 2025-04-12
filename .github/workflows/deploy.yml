@@ -27,9 +27,9 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: |
-          CF_PAGES=false npm run build
-          touch dist/.nojekyll
+        env:
+          CF_PAGES: "false"
+        run: npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
