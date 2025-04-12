@@ -1,37 +1,42 @@
-name: Deploy to GitHub Pages # 只部署到 GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - master
+    branches: [ main, master ]
+  workflow_dispatch:
 
 permissions:
-  contents: write # GitHub Pages 需要写入仓库（gh-pages 分支）
+  contents: write
   pages: write
   id-token: write
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'npm'
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Build for GitHub
-        run: npm run build --mode github
+      - name: Build
+        run: npm run build
+        # 不需要额外的 --base 参数，因为已在 vite.config.js 中设置
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Create .nojekyll file
+        run: touch dist/.nojekyll
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          force_orphan: true
+          folder: dist
+          branch: gh-pages
 
 
