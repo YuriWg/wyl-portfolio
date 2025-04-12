@@ -30,7 +30,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist  # 改为 dist
           force_orphan: true
           
@@ -40,5 +40,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: dataviz-portfolio
-          directory: dist  # 改为 dist
+          directory: dist
           branch: master
+          # Remove github_token and use gitHubToken instead
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
