@@ -6,7 +6,11 @@
   "homepage": "https://yuriwg.github.io/wyl-portfolio",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
+    "build:github": "vite build --base=/wyl-portfolio/",
+    "build:cloudflare": "vite build",
+    "deploy:github": "npm run build:github && gh-pages -d dist",
+    "deploy:cloudflare": "npm run build:cloudflare",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
