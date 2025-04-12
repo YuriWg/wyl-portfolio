@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProjectDetail from './pages/ProjectDetail.tsx';
 import About from './pages/About.tsx';
 import Blog from './pages/Blog.tsx';
+
 import './i18n';
 import './index.css';
 
@@ -14,7 +15,7 @@ function App() {
   return (
     <Router basename={basename}>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<ProjectDetail />} /> {/* 修改这里，使用Home组件而不是App自身 */}
         <Route path="/project/:id" element={<ProjectDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
@@ -22,8 +23,6 @@ function App() {
     </Router>
   );
 }
-
-export default App;
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
