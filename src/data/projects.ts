@@ -80,7 +80,7 @@ export const projects: Project[] = [
     id: 2,
     title: "跑步数据可视化",
     description: "基于D3.js的互动式跑步数据可视化，展示运动轨迹、配速和相关统计数据。",
-    image: "/DataViz-Portfolio/images/projects/running-tracker.png",
+    image: "/images/projects/running-tracker.png",
     category: "life",
     type: "d3",
     publishDate: "2023-12",
@@ -94,7 +94,7 @@ export const projects: Project[] = [
     
     d3Props: {
       sourceUrl: "https://yuriwg.github.io/running-tracker-react/",
-      previewImageUrl: "/DataViz-Portfolio/images/projects/running-tracker.png",
+      previewImageUrl: "/images/projects/running-tracker.png",
       width: "100%",
       height: "auto",
       isEmbeddable: true
@@ -104,7 +104,7 @@ export const projects: Project[] = [
     id: 3,
     title: "心情花园可视化",
     description: "基于D3.js的互动式数据可视化，将每日心情数据以花朵形式展现，支持多种布局和主题色。",
-    image: "/DataViz-Portfolio/images/projects/mood-garden-preview.jpg", // 确保路径正确
+    image: "/images/projects/mood-garden-preview.jpg", // 确保路径正确
     category: "life",
     type: "d3", // 使用 d3 类型
     publishDate: "2023-08",
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     // 使用统一的 d3Props 替代专属配置
     d3Props: {
       sourceUrl: "https://yuriwg.github.io/mood-garden-viz/", 
-      previewImageUrl: "/DataViz-Portfolio/images/projects/mood-garden-preview.jpg",
+      previewImageUrl: "/images/projects/mood-garden-preview.jpg",
       width: "100%",
       height: "1200px",
       isEmbeddable: true // 目前尚未部署到可嵌入的位置
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     id: 4,
     title: "极简主义挑战",
     description: "基于D3.js的互动式数据可视化，展示100天极简主义挑战的过程和成果。",
-    image: "/DataViz-Portfolio/images/projects/minimalism-preview.png",
+    image: "/images/projects/minimalism-preview.png",
     category: "life",
     type: "d3",
     publishDate: "2024-01",
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     
     d3Props: {
       sourceUrl: "https://yuriwg.github.io/minimalism-challenge/",
-      previewImageUrl: "/DataViz-Portfolio/images/projects/minimalism-preview.png",
+      previewImageUrl: "/images/projects/minimalism-preview.png",
       width: "100%",
       height: "1400px",
       isEmbeddable: true
