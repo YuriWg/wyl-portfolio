@@ -313,7 +313,7 @@ function App() {
                   }}/>
                 </div>
               </a>
-              <a 
+              {/* <a 
                 href="https://www.xiaohongshu.com/user/profile/62aa9352000000001902bd0b" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -329,7 +329,7 @@ function App() {
                     stroke: 'white'
                   }}/>
                 </div>
-              </a>
+              </a> */}
               <a 
                 href="https://github.com" 
                 target="_blank" 
@@ -407,9 +407,9 @@ function App() {
                   key={type}
                   onClick={() => setSelectedType(type)}
                   className={`sticker-button-alt ${
-                    selectedType === type
-                      ? 'sticker-button-alt-active'
-                      : ''
+                  selectedType === type
+                  ? 'sticker-button-alt-active'
+                  : ''
                   }`}
                 >
                   {t(`types.${type}`)}

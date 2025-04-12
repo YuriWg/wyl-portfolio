@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Mail, Github, Linkedin, Twitter } from 'lucide-react';
+import { ArrowLeft, Mail, Github, Linkedin, Twitter, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const About: React.FC = () => {
@@ -46,13 +46,13 @@ const About: React.FC = () => {
 
               <div className="flex space-x-4 mb-8">
                 <a 
-                  href="mailto:contact@example.com" 
+                  href="wangyuli1991@hotmail.com" 
                   className="text-gray-600 hover:text-gray-900"
                 >
                   <Mail className="w-5 h-5" />
                 </a>
                 <a 
-                  href="https://github.com/yourusername" 
+                  href="https://github.com/yuriwg" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-gray-600 hover:text-gray-900"
@@ -68,7 +68,7 @@ const About: React.FC = () => {
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a 
-                  href="https://twitter.com/yourusername" 
+                  href="https://x.com/yuli_wg?s=21" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-gray-600 hover:text-gray-900"

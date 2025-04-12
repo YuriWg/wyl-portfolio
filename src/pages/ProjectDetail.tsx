@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Calendar, Tag, BarChart2, FileText, ExternalLink, User, Database, Wrench } from 'lucide-react';
+import { Info, ArrowLeft, Calendar, Tag,  FileText, ExternalLink, User, Database, Wrench } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import TableauEmbed from '../components/TableauEmbed';
 import D3Embed from '../components/D3Embed';
+import GitHubReadme from '../components/GitHubReadme';
 import { projects, Project } from '../data/projects';
 
 const ProjectDetail: React.FC = () => {
@@ -26,7 +27,7 @@ const ProjectDetail: React.FC = () => {
           <h1 className="text-2xl font-bold mb-4">{t('project.notFound')}</h1>
           <Link to="/" className="text-blue-600 hover:underline flex items-center justify-center">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('project.backToHome')}
+            <span>{t('Back')}</span>
           </Link>
         </div>
       </div>
@@ -39,10 +40,10 @@ const ProjectDetail: React.FC = () => {
       <div className="fixed top-6 left-6 z-50">
         <Link 
           to="/" 
-          className="flex items-center space-x-2 bg-white rounded-full px-4 py-2 shadow-md hover:bg-gray-100 transition-colors"
+          className="sticker-link-button"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>{t('project.backToHome')}</span>
+          <span>{t('Back')}</span>
         </Link>
       </div>
 
@@ -62,9 +63,13 @@ const ProjectDetail: React.FC = () => {
 
       {/* 项目信息部分 - 重新设计的布局 */}
       <div className="max-w-4xl mx-auto px-6 py-12">
-        {/* 项目元数据 - 卡片式布局 */}
-        <div className="bg-white rounded-xl shadow-sm p-8 mb-12">
-          <h2 className="text-2xl font-bold mb-6 border-b pb-4">{t('project.projectInfo')}</h2>
+        {/* 项目元数据 */}
+        <h2 className="sticker-detail-title flex items-center">
+           {/* <Info className="w-5 h-5 mr-2" />*/}
+            {t('Info')}
+          </h2>
+        <div className="sticker-detail-card mb-12">
+      
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* 左侧列 */}
@@ -72,19 +77,19 @@ const ProjectDetail: React.FC = () => {
               {/* 客户端 */}
               <div>
                 <div className="flex items-center text-gray-700 mb-2">
-                  <User className="w-4 h-4 mr-2" />
-                  <span className="font-medium">{t('project.client')}</span>
+                  <User className="w-5 h-5 mr-2" />
+                  <span className="font-semibold text-gray-900">{t('project.client')}</span>
                 </div>
-                <p className="text-gray-600 ml-6">{project.client || "Self-initiated"}</p>
+                <p className="text-gray-600 ml-7 font-normal bg-gray-50 py-1 px-2 rounded-md inline-block">{project.client || "Self-initiated"}</p>
               </div>
               
               {/* 分类 */}
               <div>
                 <div className="flex items-center text-gray-700 mb-2">
-                  <Tag className="w-4 h-4 mr-2" />
-                  <span className="font-medium">{t('project.categories')}</span>
+                  <Tag className="w-5 h-5 mr-2" />
+                  <span className="font-semibold text-gray-900">{t('project.categories')}</span>
                 </div>
-                <p className="text-gray-600 ml-6">{t(`categories.${project.category}`)}</p>
+                <p className="text-gray-600 ml-7 font-normal bg-gray-50 py-1 px-2 rounded-md inline-block">{t(`categories.${project.category}`)}</p>
               </div>
             </div>
             
@@ -93,19 +98,19 @@ const ProjectDetail: React.FC = () => {
               {/* 工具 */}
               <div>
                 <div className="flex items-center text-gray-700 mb-2">
-                  <Wrench className="w-4 h-4 mr-2" />
-                  <span className="font-medium">{t('project.tools')}</span>
+                  <Wrench className="w-5 h-5 mr-2" />
+                  <span className="font-semibold text-gray-900">{t('project.tools')}</span>
                 </div>
-                <p className="text-gray-600 ml-6">{t(`types.${project.type}`)}</p>
+                <p className="text-gray-600 ml-7 font-normal bg-gray-50 py-1 px-2 rounded-md inline-block">{t(`types.${project.type}`)}</p>
               </div>
               
               {/* 数据 */}
               <div>
                 <div className="flex items-center text-gray-700 mb-2">
-                  <Database className="w-4 h-4 mr-2" />
-                  <span className="font-medium">{t('project.data')}</span>
+                  <Database className="w-5 h-5 mr-2" />
+                  <span className="font-semibold text-gray-900">{t('project.data')}</span>
                 </div>
-                <p className="text-gray-600 ml-6">{project.dataSource || "Various sources"}</p>
+                <p className="text-gray-600 ml-7 font-normal bg-gray-50 py-1 px-2 rounded-md inline-block">{project.dataSource || "Various sources"}</p>
               </div>
             </div>
             
@@ -114,25 +119,25 @@ const ProjectDetail: React.FC = () => {
               {/* 发布日期 */}
               <div>
                 <div className="flex items-center text-gray-700 mb-2">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  <span className="font-medium">{t('project.publishDate')}</span>
+                  <Calendar className="w-5 h-5 mr-2" />
+                  <span className="font-semibold text-gray-900">{t('project.publishDate')}</span>
                 </div>
-                <p className="text-gray-600 ml-6">{project.publishDate}</p>
+                <p className="text-gray-600 ml-7 font-normal bg-gray-50 py-1 px-2 rounded-md inline-block">{project.publishDate}</p>
               </div>
               
               {/* 链接 */}
               {project.link && (
                 <div>
                   <div className="flex items-center text-gray-700 mb-2">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    <span className="font-medium">{t('project.link')}</span>
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    <span className="font-semibold text-gray-900">{t('project.link')}</span>
                   </div>
-                  <p className="text-gray-600 ml-6">
+                  <p className="text-gray-600 ml-7">
                     <a 
                       href={project.link} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
+                      className="text-blue-600 hover:underline bg-gray-50 py-1 px-2 rounded-md inline-block"
                     >
                       {project.linkText || t('project.viewOriginal')}
                     </a>
@@ -146,45 +151,76 @@ const ProjectDetail: React.FC = () => {
         {/* 项目描述 */}
         <div className="prose prose-lg max-w-none mb-12">
           <p className="text-xl leading-relaxed">{project.description}</p>
-          
           {project.longDescription && (
-            <p className="mt-6">
-              {project.longDescription}
-            </p>
+            <p className="mt-6">{project.longDescription}</p>
           )}
         </div>
 
-        {/* Tableau 可视化 */}
-        {project.tableauProps && (
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-6">{t('project.visualization')}</h2>
-            <div className="bg-white p-4 rounded-lg shadow-md overflow-hidden">
-              <TableauEmbed
-                vizId={project.tableauProps.vizId}
-                width={project.tableauProps.width || '100%'}
-                height={project.tableauProps.height || '600px'}
-                vizName={project.tableauProps.vizName || ''}
-                staticImageSrc={project.tableauProps.staticImageSrc || ''}
-              />
-            </div>
-          </div>
-        )}
+        {/* 项目展示 - 统一使用一个展示区域 */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-6">{t('Showcase')}</h2>
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            {/* Tableau 项目 */}
+            {project.type === 'tableau' && project.tableauProps && (
+              <div className="tableau-visualization">
+                <TableauEmbed 
+                  {...project.tableauProps}
+                  width="100%"
+                  height="800px"  // 设置一个合适的初始高度
+                  vizName={project.tableauProps.vizName}
+                  staticImageSrc={project.image}  // 使用项目封面图作为加载时的预览图
+                  link={project.link}
+                  linkText={project.linkText}
+                />
+              </div>
+            )}
 
-        {/* D3 可视化 */}
-        {project.d3Props && (
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-6">{t('project.visualization')}</h2>
-            <div className="bg-white p-4 rounded-lg shadow-md overflow-hidden">
-              <D3Embed
-                sourceUrl={project.d3Props.sourceUrl}
-                previewImageUrl={project.d3Props.previewImageUrl}
-                width={project.d3Props.width || '100%'}
-                height={project.d3Props.height || '1400px'}
-                isEmbeddable={project.d3Props.isEmbeddable}
-              />
-            </div>
+            {/* D3 项目 */}
+            {project.type === 'd3' && project.d3Props && (
+              <D3Embed {...project.d3Props} />
+            )}
+
+            {/* 其他类型项目 */}
+            {project.type !== 'tableau' && project.type !== 'd3' && project.showcaseProps && (
+              <>
+                {project.showcaseProps.type === 'other' && (
+                  <GitHubReadme
+                    owner={project.showcaseProps.owner || ''}
+                    repo={project.showcaseProps.repo || ''}
+                    branch={project.showcaseProps.branch}
+                  />
+                )}
+                {project.showcaseProps.type === 'custom' && project.showcaseProps.content && (
+                  <div className="prose prose-gray max-w-none">
+                    {project.showcaseProps.content}
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* 项目链接 */}
+            {project.showcaseProps?.links && project.showcaseProps.links.length > 0 && (
+              <div className="mt-8 pt-6 border-t">
+                <h3 className="text-xl font-semibold mb-4">{t('project.projectLinks')}</h3>
+                <div className="flex flex-wrap gap-3">
+                  {project.showcaseProps.links.map((link, index) => (
+                    <a
+                      key={index}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-2 bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
+                    >
+                      <span>{link.label}</span>
+                      <ExternalLink className="w-4 h-4 ml-1" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-        )}
+        </div>
+      </div>
 
         {/* 下载模板按钮 */}
         {project.downloadUrl && (
@@ -194,15 +230,16 @@ const ProjectDetail: React.FC = () => {
               href={project.downloadUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-block bg-[#FF9B26] hover:bg-[#ff8c00] text-white font-medium px-8 py-2 rounded-full transition-colors"
             >
-              <FileText className="w-5 h-5" />
-              <span>{t('project.downloadTemplate')}</span>
+              <div className="flex items-center space-x-2">
+                <FileText className="w-5 h-5" />
+                <span>{t('project.downloadTemplate')}</span>
+              </div>
             </a>
           </div>
         )}
       </div>
-    </div>
   );
 };
 

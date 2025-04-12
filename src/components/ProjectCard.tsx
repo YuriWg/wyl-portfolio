@@ -15,8 +15,8 @@ interface ProjectCardProps {
   onViewTableau?: (props: any) => void;
   onClick?: () => void; // 添加 onClick 属性
   className?: string;
+  category?: string;
 }
-
 const ProjectCard: React.FC<ProjectCardProps> = ({
   id,
   title,
@@ -29,6 +29,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   tableauProps,
   onViewTableau,
   className,
+  category,
+
 }) => {
   const { t } = useTranslation();
   
@@ -49,28 +51,34 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <p className="text-gray-600 mb-4 text-sm">{description}</p>
         <div className="flex justify-between items-center">
           <span className="text-xs text-gray-500">{publishDate}</span>
-          <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
-            {t(`types.${type}`)}
-          </span>
+          <div className="flex gap-2">
+        <span className="text-xs font-semibold bg-amber-500 text-white px-2 py-1 rounded-full">
+          {t(`${type}`)}
+        </span>
+        <span className="text-xs font-semibold bg-black text-white px-2 py-1 rounded-full">
+          {t(`${category || 'other'}`)}
+        </span>
+          </div>
         </div>
 
-        <div className="mt-2 flex justify-left">
+        <div className="mt-4 flex justify-start">
           <Link
             to={`/project/${id}`}
-            className="text-sm bg-gray-300 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition-colors"
+            className="flex items-center gap-2 text-sm font-medium text-amber-500 hover:text-amber-700 transition-colors duration-300 group"
           >
+            {t('View Details')}
             <svg 
               xmlns="http://www.w3.org/2000/svg"
-              className="w-3 h-3 transform group-hover:translate-x-1 transition-transform" 
+              className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
             >
               <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth="2" 
-                d="M17 8l4 4m0 0l-4 4m4-4H3" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          strokeWidth="2" 
+          d="M13 7l5 5m0 0l-5 5m5-5H6" 
               />
             </svg>
           </Link>

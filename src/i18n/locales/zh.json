@@ -78,7 +78,9 @@
     "publishDate": "发布日期",
     "githubRepo": "GitHub 仓库",
     "viewOriginal": "查看原始作品",
-    "projectInfo": "项目信息"
+    "projectInfo": "项目信息",
+    "showcase": "项目展示",
+    "projectLinks": "项目链接"
   },
   "footer": {
     "copyright": "© 2023 数据可视化作品集. 保留所有权利."

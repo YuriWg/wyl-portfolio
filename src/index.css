@@ -210,18 +210,8 @@
   display: inline-block;
 }
 
-.sticker-text-small {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
-  font-weight: bold;
-  filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.2));
-  background-color: white;
-  padding: 2px 6px;
-  border: 1px solid #000;
-  border-radius: 8px;
-  display: inline-block;
-  transform: rotate(-1deg);
-  font-size: 0.9rem;
-}
+
+
 
 .sticker-title {
   font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
@@ -481,6 +471,27 @@
   filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
 }
 
+/* 卡片中的跳转按钮样式，与主按钮保持一致 */
+.sticker-button-card {
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  border: 2px solid #000;
+  border-radius: 30px;
+  padding: 4px 16px;
+  transform: rotate(-1deg);
+  transition: all 0.3s ease;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2));
+  display: inline-block;
+  font-size: 0.95rem;
+}
+
+.sticker-button-card:hover {
+  transform: rotate(1deg) scale(1.05);
+  filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.25));
+}
+
 /* 手绘风格图标效果 */
 .hand-drawn-icon {
   filter: url('#hand-drawn-filter');
@@ -596,4 +607,90 @@
   right: 15%;
   transform: rotate(-5deg);
   opacity: 0.1;
+}
+
+/* 详情页面卡片样式 */
+.sticker-detail-card {
+  background-color: white;
+  border: 3px solid #000;
+  border-radius: 15px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.2));
+  transform: rotate(-0.5deg);
+}
+
+.sticker-detail-card:hover {
+  transform: rotate(1deg) translateY(-2px);
+  filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
+}
+
+/* 详情页面信息项样式 */
+.sticker-info-item {
+  background-color: #fff;
+  padding: 12px;
+  border: 2px solid #000;
+  border-radius: 12px;
+  transform: rotate(-0.5deg);
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+}
+
+.sticker-info-item:hover {
+  transform: rotate(0.5deg) translateY(-2px);
+  filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.2));
+}
+
+/* 详情页面标题样式 */
+.sticker-detail-title {
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  transform: rotate(-1deg);
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 0px solid #000;
+  border-radius: 0px;
+  /*filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.2));*/
+}
+
+/* 详情页面链接按钮样式 */
+.sticker-link-button {
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  border: 2px solid #000;
+  border-radius: 30px;
+  padding: 8px 20px;
+  transform: rotate(-1deg);
+  transition: all 0.3s ease;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2));
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sticker-link-button:hover {
+  transform: rotate(1deg) scale(1.05);
+  filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.25));
+}
+
+/* 详情页面展示区域样式 */
+.sticker-showcase {
+  background-color: white;
+  border: 3px solid #000;
+  border-radius: 15px;
+  padding: 24px;
+  margin-top: 32px;
+  transform: rotate(0.5deg);
+  transition: all 0.3s ease;
+  filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.2));
+}
+
+.sticker-showcase:hover {
+  transform: rotate(-0.5deg) translateY(-2px);
+  filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
 }

@@ -77,7 +77,9 @@
     "data": "DATA",
     "publishDate": "PUBLISH DATE",
     "githubRepo": "GitHub Repository",
-    "viewOriginal": "View Original Work"
+    "viewOriginal": "View Original Work",
+    "showcase": "Project Showcase",
+    "projectLinks": "Project Links"
   },
   "footer": {
     "copyright": "© 2025 DataViz Portfolio. All rights reserved."
