@@ -9,8 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write      # 修改这里，给予写入权限
       deployments: write
+      pages: write        # 添加这个权限
+      id-token: write     # 添加这个权限
     steps:
       - uses: actions/checkout@v3
       
