@@ -5,14 +5,14 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write      # 修改这里，给予写入权限
-      deployments: write
-      pages: write        # 添加这个权限
-      id-token: write     # 添加这个权限
     steps:
       - uses: actions/checkout@v3
       
@@ -32,6 +32,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+          force_orphan: true
           
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
