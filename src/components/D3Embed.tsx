@@ -1,85 +1,112 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ExternalLink } from 'lucide-react';
 
 interface D3EmbedProps {
-  sourceUrl: string;
-  previewImageUrl?: string;
-  width?: string;
-  height?: string;
-  isEmbeddable?: boolean;
-  title?: string;
-  description?: string;
-  link?: string;
-  linkText?: string;
-  dataSource?: string;
+  previewImage: string;
+  demoUrl?: string;
 }
 
-const D3Embed: React.FC<D3EmbedProps> = ({
-  sourceUrl,
-  previewImageUrl,
-  width = '100%',
-  height = '100%',
-  isEmbeddable = false,
-  title,
-  description,
-  link,
-  linkText = "查看源代码",
-  dataSource
-}) => {
-  return (
-    <div className="viz-container bg-white rounded-lg shadow-sm p-6">
-      {title && (
-        <h2 className="text-2xl font-bold mb-4">{title}</h2>
-      )}
-      
-      <div className="mb-6">
-        <div 
-          className="viz-content bg-white rounded-lg overflow-hidden"
-          style={{
-            width,
-            height : 'auto',
-          }}
-        >
-          {previewImageUrl && (
-            <img 
-              src={previewImageUrl} 
-              alt={title || "Project Preview"} 
-              className="w-full h-auto rounded-lg mb-4"
-            />
-          )}
-          
-          {description && (
-            <p className="text-gray-600 mb-4">{description}</p>
-          )}
-          
-          {dataSource && (
-            <div className="text-sm text-gray-500 mb-4">
-              数据来源：{dataSource}
-            </div>
-          )}
-        </div>
-      </div>
+const D3Embed: React.FC<D3EmbedProps> = ({ previewImage, demoUrl }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [showDemo, setShowDemo] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation(['common']);
 
-      <div className="flex justify-between items-center">
-        <a 
-          href={sourceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="sticker-link-button align-items-center "
-        >
-          Interactive Page
-        </a>
-        
-        {link && (
-          <a 
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-[#FF9B26] hover:bg-[#ff8c00] text-white font-medium px-8 py-2 rounded-full transition-colors"
-          >
-            {linkText}
-          </a>
+  // 监听容器宽度变化，动态调整高度
+  useEffect(() => {
+    if (!containerRef.current) return;
+    
+    const resizeObserver = new ResizeObserver(entries => {
+      for (const entry of entries) {
+        const width = entry.contentRect.width;
+        // 可以在这里添加高度调整逻辑
+      }
+    });
+    
+    resizeObserver.observe(containerRef.current);
+    
+    return () => resizeObserver.disconnect();
+  }, []);
+
+  const safePreviewImage = previewImage || '/images/placeholder.png';
+
+  // 处理在新窗口打开demo
+  const handleOpenDemo = () => {
+    if (demoUrl) {
+      window.open(demoUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="w-full relative" ref={containerRef}>
+        {/* 切换按钮 */}
+        {demoUrl && (
+            <div className="flex justify-start mb-2">
+            <button
+              onClick={() => setShowDemo(!showDemo)}
+              className="text-sm px-0 py-1 sticker-link-button"
+            >
+              {showDemo ? t('IMG') : t('DEMO')}
+            </button>
+            </div>
+        )}
+
+        {/* 主要内容区域 */}
+        {(showDemo && demoUrl) ? (
+            <>
+            <iframe
+              src={demoUrl}
+              className="w-full border-0"
+              style={{ height: '1000px', transform: 'scale(1)' }}
+              title="D3 Visualization"
+              loading="lazy"
+              onLoad={() => setIsLoading(false)}
+              onError={() => {
+              setError('可视化加载失败');
+              setIsLoading(false);
+              }}
+            />
+            
+            {isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-50">
+              <div className="loading-spinner"></div>
+              </div>
+            )}
+            </>
+        ) : (
+          <img 
+            src={safePreviewImage}
+            alt="D3 Visualization Preview"
+            className="w-full h-auto rounded-lg shadow-md"
+            onError={(e) => {
+              console.error('预览图片加载失败:', previewImage);
+              (e.target as HTMLImageElement).src = '/images/placeholder.png';
+            }}
+          />
+        )}
+
+        {error && (
+          <div className="text-red-500 text-center mt-4">
+            {error}
+          </div>
         )}
       </div>
+
+      {/* 跳转按钮 */}
+      {demoUrl && (
+        <div className="flex justify-end">
+          <button
+            onClick={handleOpenDemo}
+            className="sticker-link-button"
+          >
+            <span>{t('View', { ns: 'project' })}</span>
+            <ExternalLink className="w-4 h-4" />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

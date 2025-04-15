@@ -1,65 +1,45 @@
 import React from 'react';
+import { ExternalLink } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { ProjectEmbedProps } from './ProjectEmbed';
 
-interface TableauEmbedProps {
-  vizName: string;
-  vizId: string;
-  width?: string;
-  height?: string;
-  staticImageSrc?: string;
-  link?: string;
-  linkText?: string;
-  title?: string;
-  description?: string;
-  options?: {
-    hideTabs?: boolean;
-    hideToolbar?: boolean;
-    showShareOptions?: boolean;
-    allowPopups?: boolean;
-    device?: 'desktop' | 'tablet' | 'phone';
-  };
-}
-
-const TableauEmbed: React.FC<TableauEmbedProps> = ({ 
-  vizName,
-  width = '100%',
-  height = '800px',
-  title,
-  description,
-  staticImageSrc,
-  link,
-  linkText = "Tableau Public"
+const TableauEmbed: React.FC<ProjectEmbedProps> = ({
+  previewImage,
+  demoUrl,
 }) => {
+  const { t, i18n } = useTranslation();
+  const isZh = i18n.language.startsWith('zh');
+
+  const zhFontStyle = isZh
+    ? {
+        fontFamily: '"Microsoft YaHei", "微软雅黑", SimHei, "黑体", sans-serif',
+      }
+    : {};
+
   return (
-    <div className="viz-container bg-white rounded-lg shadow-sm p-6">
-      {title && (
-        <h2 className="text-2xl font-bold mb-4">{title}</h2>
-      )}
-      
-      {description && (
-        <p className="text-gray-600 mb-4">{description}</p>
-      )}
+    <div className="tableau-static-visualization w-full">
+      {previewImage ? (
+        <div className="tableau-image-container border border-gray-200 rounded-lg overflow-hidden">
+          <img 
+            src={previewImage} 
+            alt="Visualization" 
+            className="w-full object-contain mx-auto"
+            style={{ maxWidth: '100%' }}
+          />
+        </div>
+      ) : null}
 
-      <div className="tableau-container w-full">
-        <img
-          src={staticImageSrc}
-          alt={title || "Tableau visualization"}
-          className="w-full h-auto"
-          style={{
-            maxWidth: '100%',
-            display: 'block'
-          }}
-        />
-      </div>
-
-      {link && (
-        <div className="mt-4">
+      {demoUrl && (
+        <div className="mt-4 flex justify-end">
           <a 
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={demoUrl}
+            target="_blank" 
+            rel="noopener noreferrer" 
             className="sticker-link-button"
+            style={zhFontStyle}
           >
-            {linkText}
+            <span>{t('View', { ns: 'project' })}</span>
+            <ExternalLink className="w-4 h-4 ml-1" />
           </a>
         </div>
       )}

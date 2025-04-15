@@ -6,7 +6,7 @@
   },
   "about": {
     "backToHome": "Back to Home",
-    "name": "Your Name",
+    "name": "Yuli Wang",
     "title": "Data Visualization Designer & Developer",
     "aboutMe": "About Me",
     "bio": "I am a designer and developer focused on data visualization and interactive storytelling. I am passionate about transforming complex data into intuitive, engaging visual experiences.",
@@ -33,7 +33,13 @@
       "degree": "Master of Data Science",
       "school": "University Name",
       "period": "2016 - 2018"
-    }
+    },
+    "interest": "Interest",
+    "interest1": "interest",
+    "interest2": "interest",
+    "interest3": "interest",
+    "interest4": "interest"
+
   },
   "blog": {
     "backToHome": "Back to Home",

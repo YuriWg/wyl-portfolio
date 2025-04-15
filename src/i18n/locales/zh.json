@@ -1,7 +1,10 @@
 {
   "header": {
-    "title": "数据可视化作品集",
-    "about": "关于我",
+    "title": "数据可视化作品集"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于",
     "blog": "博客"
   },
   "about": {
@@ -53,36 +56,44 @@
     "society": "社会",
     "culture": "文化",
     "templates": "模板",
-    "life": "生活" 
+    "life": "生活"
   },
-  "types": {
-    "all": "所有工具",
+  "tools": {
+    "all": "全部工具",
     "tableau": "TABLEAU",
-    "d3": "D3",
+    "d3": "D3.JS",
     "python": "PYTHON",
     "obsidian": "OBSIDIAN"
   },
+  "Error loading projects": "加载项目出错",
+  "No projects found matching your filters": "没有找到匹配筛选条件的项目",
+  "Reset filters": "重置筛选条件",
+  "View Details": "查看详情",
+  "Back": "返回",
+  "Info": "信息",
   "project": {
-    "downloadTemplate": "下载模板",
-    "viewVisualization": "查看可视化",
-    "backToHome": "返回首页",
-    "notFound": "未找到项目",
-    "visualization": "可视化",
-    "resources": "资源",
-    "relatedLinks": "相关链接",
     "client": "客户",
-    "link": "链接",
     "categories": "分类",
     "tools": "工具",
-    "data": "数据",
+    "data": "数据来源",
     "publishDate": "发布日期",
-    "githubRepo": "GitHub 仓库",
-    "viewOriginal": "查看原始作品",
-    "projectInfo": "项目信息",
-    "showcase": "项目展示",
-    "projectLinks": "项目链接"
+    "link": "链接",
+    "viewOriginal": "查看原始",
+    "projectLinks": "项目链接",
+    "resources": "资源",
+    "downloadTemplate": "下载模板",
+    "notFound": "项目未找到"
   },
+  "Showcase": "项目展示",
+  "tableau": "Tableau",
+  "d3": "D3.js",
+  "python": "Python",
+  "obsidian": "Obsidian",
+  "other": "其他",
+  "life": "生活",
   "footer": {
-    "copyright": "© 2023 数据可视化作品集. 保留所有权利."
+    "rights": "保留所有权利",
+    "about": "关于",
+    "privacy": "隐私政策"
   }
 }

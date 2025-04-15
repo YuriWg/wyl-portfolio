@@ -7,18 +7,18 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* 将幼圆字体更换为微软雅黑 */
-    font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* 使用Comic Sans MS作为主字体 */
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
   }
   
   body {
     @apply antialiased;
-    background-color: #f8f9fa;
-    /* 替换为更有趣的手绘背景 */
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    background-color: #ffffff;
+    /* 添加手绘风格的背景 */
     background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%239C92AC' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E"),
       url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffacac' fill-opacity='0.05'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
       url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234299e1' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
-    /* 添加一些手绘风格的装饰元素 */
     position: relative;
   }
   
@@ -61,7 +61,7 @@
     left: 10%;
     right: 10%;
     height: 3px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 3' preserveAspectRatio='none'%3E%3Cpath d='M0,1 C20,2 30,0 50,1 C70,2 80,0 100,1' fill='none' stroke='%23000' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+    
     background-repeat: no-repeat;
     background-size: 100% 100%;
     opacity: 0.2;
@@ -70,6 +70,7 @@
   /* 添加随机的手绘小点点背景 */
   .projects-section {
     position: relative;
+
   }
   
   .projects-section::before {
@@ -105,12 +106,100 @@
 
 @layer components {
   .container {
-    @apply max-w-7xl mx-auto;
+    @apply max-w-5xl mx-auto px-4; /* 从 max-w-7xl 改为 max-w-5xl, 添加水平内边距 */
   }
 }
 
+/* 修改项目区域容器 */
+.projects-section > div {
+  @apply max-w-6xl; /* 从 max-w-7xl 改为 max-w-5xl */
+}
+
+/* 修改英雄区域宽度 */
+.hero-section > div {
+  @apply max-w-4xl; /* 原来是 max-w-5xl */
+}
+
+.scroll-down-button {
+  @apply flex justify-center items-center w-full;  /* 添加全宽度和居中对齐 */
+  margin: 3rem auto 0;  /* 增大上边距为2rem，左右保持auto居中 */
+}
+
+/* Markdown 内容样式 */
+.prose {
+  max-width: 65ch;
+  color: #374151;
+}
+
+.prose h1 {
+  font-size: 2.25em;
+  font-weight: bold;
+  margin-top: 1.6em;
+  margin-bottom: 0.8em;
+}
+
+.prose h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 1.6em;
+  margin-bottom: 0.8em;
+}
+
+.prose h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+}
+
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.prose ul {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+  list-style-type: disc;
+}
+
+.prose ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+  list-style-type: decimal;
+}
+
+.prose li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose a {
+  color: #2563eb;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.prose code {
+  background-color: #f3f4f6;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25em;
+  font-size: 0.875em;
+}
+
+.prose pre {
+  background-color: #1f2937;
+  color: #e5e7eb;
+  padding: 1em;
+  border-radius: 0.375em;
+  overflow-x: auto;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
 /* 卡通贴纸风格图标效果 - 随机形状 */
-/* 完全重写 sticker-icon 样式 */
 .sticker-icon {
   filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.2));
   transition: all 0.3s ease;
@@ -200,7 +289,7 @@
 
 /* 文本样式 */
 .sticker-text {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
   font-weight: bold;
   letter-spacing: 0.5px;
   /* 移除阴影、边框和背景色 */
@@ -210,24 +299,16 @@
   display: inline-block;
 }
 
-
-
-
 .sticker-title {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   letter-spacing: 1px;
-  /* 移除阴影、边框和背景色 */
-  filter: none;
-  background-color: transparent;
-  border: none;
-  display: inline-block;
-  transform: none;
+  transform: rotate(-1deg);
 }
 
 .sticker-hero-title {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
   font-weight: bold;
   font-size: 3rem;
   letter-spacing: 1px;
@@ -240,14 +321,11 @@
 }
 
 .sticker-hero-subtitle {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
   font-size: 1.2rem;
-  /* 移除阴影、边框和背景色 */
-  filter: none;
-  background-color: transparent;
-  border: none;
-  transform: none;
-  padding: 8px 16px;
+  transform: rotate(1deg);
+  display: inline-block;
+  margin-top: 0.5rem;
 }
 
 /* 导航项目样式 */
@@ -275,7 +353,7 @@
   /* 移除边框 */
   border: none;
   border-radius: 8px;
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
   font-weight: bold;
   font-size: 0.8rem;
   white-space: nowrap;
@@ -286,16 +364,16 @@
 }
 
 .sticker-text-small {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
   font-weight: bold;
-  filter: none; /* 移除阴影效果 */
-  /*background-color: white;*/
+  background-color: white;
   padding: 2px 6px;
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 8px;
   display: inline-block;
   transform: rotate(-1deg);
   font-size: 0.9rem;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25));
 }
 
 .sticker-nav-item:hover::after {
@@ -306,7 +384,7 @@
 
 /* 按钮样式 */
 .sticker-button {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-family: 'Microsoft YaHei', '微软雅黑', 'Comic Sans MS', 'Comic Sans', cursive, SimHei, '黑体', sans-serif;
   font-weight: bold;
   background-color: white;
   color: black;
@@ -316,6 +394,11 @@
   transform: rotate(-1deg);
   transition: all 0.3s ease;
   filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2));
+  display: inline-flex; /* 改为 inline-flex */
+  align-items: center; /* 垂直居中 */
+  margin: 0.25rem;
+  height: 32px; /* 添加固定高度 */
+  line-height: 24px; /* 添加行高 */
 }
 
 .sticker-button:hover {
@@ -332,7 +415,7 @@
 
 /* 替代按钮样式 - 橙黄色 */
 .sticker-button-alt {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
+  font-family: 'Microsoft YaHei', '微软雅黑', 'Comic Sans MS', 'Comic Sans', cursive, SimHei, '黑体', sans-serif;
   font-weight: bold;
   background-color: white;
   color: black;
@@ -342,6 +425,10 @@
   transform: rotate(1deg);
   transition: all 0.3s ease;
   filter: drop-shadow(2px 2px 0px rgba(245, 158, 11, 0.3)); /* 修改阴影颜色 */
+  height: 32px; /* 添加固定高度 */
+  line-height: 24px; /* 添加行高 */
+  display: inline-flex; /* 改为 inline-flex */
+  align-items: center; /* 垂直居中 */
 }
 
 .sticker-button-alt:hover {
@@ -356,6 +443,34 @@
   filter: drop-shadow(3px 3px 0px rgba(245, 158, 11, 0.35)); /* 修改阴影颜色 */
 }
 
+/* 为筛选器按钮添加特定的样式 */
+.filter-button {
+  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  border: 2px solid #000;
+  margin: 0.25rem;
+  transition: all 0.3s ease;
+  background-color: white;
+  color: black;
+  transform: rotate(-1deg);
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2));
+  display: inline-block;
+}
+
+.filter-button:hover {
+  transform: rotate(1deg) scale(1.05);
+  filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.25));
+}
+
+.filter-button.active {
+  background-color: black;
+  color: white;
+  transform: rotate(1deg) scale(1.05);
+  filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.25));
+}
+
 /* 卡片样式 */
 .sticker-card {
   background-color: white;
@@ -365,10 +480,12 @@
   transition: all 0.3s ease;
   filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.2));
   position: relative;
-  height: 300px; /* 添加固定高度 */
+  min-height: 300px; /* 固定高度 */
+  height: auto; /* 允许内容增长 */
+  transform-origin: center bottom;
 }
 
-/* 卡片内容区域样式 */
+/* 卡片内容区域样式 - 默认隐藏 */
 .sticker-card-content {
   position: absolute;
   bottom: 0;
@@ -376,14 +493,14 @@
   right: 0;
   background-color: rgba(255, 255, 255, 0.95);
   padding: 16px;
-  transform: translateY(100%);
+  transform: translateY(100%); /* 默认隐藏在底部 */
   transition: transform 0.3s ease;
   border-top: 2px solid #000;
 }
 
 /* 悬停时显示内容 */
 .sticker-card:hover .sticker-card-content {
-  transform: translateY(0);
+  transform: translateY(0); /* 滑入显示 */
 }
 
 /* 卡片图片容器 */
@@ -435,7 +552,7 @@
   transform: rotate(-0.5deg);
 }
 
-/* 悬停效果也做相应调整，使其更加随机 */
+/* 悬停效果 - 旋转并上移 */
 .sticker-card:nth-child(7n+1):hover {
   transform: rotate(1deg) translateY(-5px);
   filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
@@ -471,25 +588,50 @@
   filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
 }
 
-/* 卡片中的跳转按钮样式，与主按钮保持一致 */
-.sticker-button-card {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
-  font-weight: bold;
-  background-color: white;
-  color: black;
-  border: 2px solid #000;
-  border-radius: 30px;
-  padding: 4px 16px;
-  transform: rotate(-1deg);
-  transition: all 0.3s ease;
-  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2));
-  display: inline-block;
-  font-size: 0.95rem;
+/* 卡片图片容器样式 */
+.sticker-card-image-container {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
 }
 
-.sticker-button-card:hover {
-  transform: rotate(1deg) scale(1.05);
-  filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.25));
+.sticker-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.sticker-card:hover .sticker-card-image {
+  transform: scale(1.05);
+}
+
+/* 卡片内容样式 */
+.sticker-card-content {
+  padding: 1.25rem;
+  background-color: white;
+}
+
+/* 链接按钮样式 */
+.sticker-link-button {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
+  color: #000;
+  padding: 0.5rem 1rem;
+  border: 2px solid #000;
+  border-radius: 9999px;
+  font-weight: bold;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  transform: rotate(-1deg);
+}
+
+.sticker-link-button:hover {
+  transform: rotate(1deg) translateY(-2px);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* 手绘风格图标效果 */
@@ -506,62 +648,45 @@
 /* 使用简单的CSS替代SVG */
 .hand-drawn-decoration {
   position: fixed;
-  z-index: -1;
-  opacity: 0.3;
+  z-index: -1; /* 确保在内容后面 */
+  opacity: 0.6; /* 提高不透明度 */
   pointer-events: none;
 }
 
 .hand-drawn-star {
-  width: 0;
-  height: 0;
-  border-right: 50px solid transparent;
-  border-bottom: 35px solid #000;
-  border-left: 50px solid transparent;
+  width: 100px;
+  height: 100px;
   top: 15%;
   right: 10%;
-  transform: rotate(35deg);
-}
-
-.hand-drawn-star:before {
-  content: '';
-  position: absolute;
-  border-bottom: 40px solid #000;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  top: -22.5px;
-  left: -32.5px;
-  transform: rotate(-35deg);
-}
-
-.hand-drawn-star:after {
-  content: '';
-  position: absolute;
-  border-bottom: 35px solid #000;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  top: 3px;
-  left: -50px;
-  transform: rotate(-70deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M50,10 L61,40 L93,40 L67,60 L77,90 L50,73 L23,90 L33,60 L7,40 L39,40 Z' stroke-opacity='0.7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transform: rotate(15deg);
 }
 
 .hand-drawn-circle {
-  width: 100px;
-  height: 100px;
-  border: 3px solid #000;
-  border-radius: 50%;
+  width: 120px;
+  height: 120px;
   bottom: 20%;
   left: 8%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000' stroke-width='2'%3E%3Ccircle cx='50' cy='50' r='45' stroke-opacity='0.7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   transform: rotate(-10deg);
 }
 
 .hand-drawn-squiggle {
-  width: 150px;
-  height: 20px;
-  background: linear-gradient(45deg, transparent, transparent 49%, #000 49%, #000 51%, transparent 51%, transparent);
-  background-size: 20px 20px;
+  width: 200px;
+  height: 100px;
   top: 40%;
   right: 5%;
-  transform: rotate(-30deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M0,50 C40,30 80,70 120,50 C160,30 200,50 200,50' stroke-opacity='0.7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transform: rotate(-5deg);
 }
 
 .hand-drawn-cloud {
@@ -612,17 +737,9 @@
 /* 详情页面卡片样式 */
 .sticker-detail-card {
   background-color: white;
-  border: 3px solid #000;
-  border-radius: 15px;
-  padding: 24px;
-  transition: all 0.3s ease;
-  filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.2));
-  transform: rotate(-0.5deg);
-}
-
-.sticker-detail-card:hover {
-  transform: rotate(1deg) translateY(-2px);
-  filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* 详情页面信息项样式 */
@@ -643,39 +760,12 @@
 
 /* 详情页面标题样式 */
 .sticker-detail-title {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
-  font-weight: bold;
-  font-size: 2rem;
-  letter-spacing: 1px;
-  transform: rotate(-1deg);
-  margin-bottom: 10px;
-  display: inline-block;
-  padding: 8px 16px;
-  border: 0px solid #000;
-  border-radius: 0px;
-  /*filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.2));*/
-}
-
-/* 详情页面链接按钮样式 */
-.sticker-link-button {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', cursive, sans-serif;
-  font-weight: bold;
-  background-color: white;
-  color: black;
-  border: 2px solid #000;
-  border-radius: 30px;
-  padding: 8px 20px;
-  transform: rotate(-1deg);
-  transition: all 0.3s ease;
-  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2));
-  display: inline-flex;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-.sticker-link-button:hover {
-  transform: rotate(1deg) scale(1.05);
-  filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.25));
+  gap: 0.5rem;
 }
 
 /* 详情页面展示区域样式 */
@@ -693,4 +783,223 @@
 .sticker-showcase:hover {
   transform: rotate(-0.5deg) translateY(-2px);
   filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.25));
+}
+
+/* 添加此类，用于加载动画 */
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #FF9B26;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 带阴影的装饰元素 */
+.decorative-element {
+  position: absolute;
+  border: 2px solid #f3f4f6;
+  border-radius: 4px;
+  opacity: 0.6;
+}
+
+/* 确保中文显示正确 */
+:lang(zh),
+[lang="zh"],
+[lang="zh-cn"],
+.zh-text {
+  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif;
+}
+
+/* 确保图片上的全部按钮的文本正确显示 */
+.button-text-zh {
+  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
+}
+
+
+/* 添加到现有 index.css 底部 */
+
+/* 修复所有工具提示文字的字体 - 确保中文显示正确 */
+[title*="中"],
+[title*="文"],
+[title^="中"] {
+  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
+}
+
+/* 针对特定的工具提示 */
+.sticker-nav-item::after {
+  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
+}
+
+/* 语言切换特定类 */
+.zh-lang-text {
+  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
+}
+
+/* 覆盖浏览器默认工具提示样式（虽然不是所有浏览器都支持） */
+::before,
+::after {
+  font-family: inherit;
+}
+
+/* 为工具提示创建自定义属性 */
+body:has([title*="中"]):after,
+body:has([title*="文"]):after {
+  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
+}
+
+/* 添加这部分到文件底部，确保覆盖所有中文内容 */
+
+/* 全局中文字体设置 */
+html:lang(zh),
+html[lang="zh"],
+html[lang="zh-cn"],
+body:lang(zh),
+body[lang="zh"],
+body[lang="zh-cn"] {
+  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
+}
+
+/* 项目详情页专用样式 */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose p,
+.prose li,
+.prose a,
+.prose blockquote,
+.sticker-showcase,
+.sticker-detail-card {
+  font-family: inherit;
+}
+
+/* 确保项目描述中的中文使用微软雅黑 */
+html:lang(zh) .prose,
+html[lang="zh"] .prose,
+html[lang="zh-cn"] .prose,
+html:lang(zh) .sticker-showcase,
+html[lang="zh"] .sticker-showcase,
+html[lang="zh-cn"] .sticker-showcase,
+html:lang(zh) .sticker-detail-card,
+html[lang="zh"] .sticker-detail-card,
+html[lang="zh-cn"] .sticker-detail-card {
+  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
+}
+
+/* 使用更强的选择器覆盖详情页中的文本 */
+html:lang(zh) .prose *,
+html[lang="zh"] .prose *,
+html[lang="zh-cn"] .prose * {
+  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
+}
+
+/* 确保 dangerouslySetInnerHTML 渲染的内容也使用正确的字体 */
+html:lang(zh) [dangerouslySetInnerHTML],
+html[lang="zh"] [dangerouslySetInnerHTML],
+html[lang="zh-cn"] [dangerouslySetInnerHTML] {
+  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
+}
+
+/* About页面特定样式 */
+.about-content {
+  max-width: none;
+  min-height: 600px; /* 内容区域最小高度 */
+  height: auto;
+  overflow: visible;
+}
+
+.about-content h2 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #2d3748;
+  transform: rotate(-1deg);
+  margin: 2rem 0 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.about-content h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #4a5568;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.about-content p {
+  line-height: 1.75;
+  color: #4a5568;
+  margin: 1rem 0;
+}
+
+.about-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.about-content ul li {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  background: white;
+  border: 2px solid #000;
+  border-radius: 30px;
+  display: inline-block;
+  transform: rotate(-1deg);
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+}
+
+/* 中文字体类 */
+.font-chinese {
+  font-family: "Microsoft YaHei", "微软雅黑", SimHei, "黑体", sans-serif;
+}
+
+/* 默认字体类 */
+.font-comic {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+/* 通过语言属性选择器应用字体（可选的高级功能） */
+[lang="zh"] * {
+  font-family: "Microsoft YaHei", "微软雅黑", SimHei, "黑体", sans-serif;
+}
+
+[lang="en"] * {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+/* 贴纸风格头像 */
+.sticker-card-avatar {
+  transition: all 0.3s ease;
+  transform-origin: center;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+  border: 4px solid rgb(0, 0, 0);
+}
+
+.sticker-card-avatar:hover {
+  transform: scale(1.05) rotate(0deg);
+  box-shadow: 2px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* 为圆形头像添加一点纹理 */
+.sticker-card-avatar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  border-radius: 50%;
+  mix-blend-mode: overlay;
+  pointer-events: none;
 }

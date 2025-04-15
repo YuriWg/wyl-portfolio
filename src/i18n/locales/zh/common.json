@@ -1,0 +1,37 @@
+{
+  "header": {
+    "title": "数据可视化作品集"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于",
+    "blog": "博客",
+    "tableau":"Tableau Public",
+    "github":"GitHub",
+    "contact":"邮箱"
+  },
+  "hero": {
+    "title": "有意义的数据故事",
+    "subtitle": "通过数据可视化、交互式故事叙述和知识管理探索世界"
+  },
+  "footer": {
+    "copyright": "© 2025 WYL. All rights reserved."
+  },
+  "categories": {
+    "all": "全部",
+    "pkm": "知识管理",
+    "society": "社会",
+    "culture": "文化",
+    "life": "生活",
+    "other": "其他"
+  },
+  "tools": {
+    "all": "全部工具",
+    "tableau": "TABLEAU",
+    "d3": "D3.JS",
+    "python": "PYTHON",
+    "obsidian": "OBSIDIAN",
+    "other": "其他"
+  }
+  
+}

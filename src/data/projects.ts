@@ -1,271 +1,209 @@
-// 定义项目类型
-// 修改 Project 接口，添加新的字段
-export interface Project {
-  id: number;
-  title: string;
-  description: string;
-  longDescription?: string;
-  image: string;
-  category: string;
-  type: 'tableau' | 'd3' | 'python'  | 'obsidian' | 'other';
-  publishDate: string;
-  client?: string;
-  dataSource?: string;
-  link?: string;
-  linkText?: string;
-  downloadUrl?: string;
+import { Project, ProjectQueryParams } from '../types/project';
+import { processMarkdownContent } from '../utils/markdownLoader';
+
+// 项目缓存
+const projectCache: Record<string, Record<string, Project>> = {
+  en: {},
+  zh: {}
+};
+
+// 获取项目列表 - 使用自动探测
+export const getProjects = async (language: string = 'en'): Promise<Project[]> => {
+  const lang = language.startsWith('zh') ? 'zh' : 'en';
+  console.log(`正在获取${lang}语言的项目列表`);
+
+  try {
+    // 获取有效的项目ID列表
+    const projectIds = await getProjectIds(lang);
+    
+    if (projectIds.length === 0) {
+      console.warn('未找到任何项目，返回空数组');
+      return [];
+    }
+    
+    console.log(`尝试加载 ${projectIds.length} 个项目: ${projectIds.join(', ')}`);
+    
+    // 加载项目内容
+    const projectPromises = projectIds.map(id => loadProjectContent(id, lang));
+    const projectResults = await Promise.all(projectPromises);
+    
+    // 过滤掉加载失败的项目
+    const validProjects = projectResults.filter((p): p is Project => p !== null);
+    console.log(`成功加载 ${validProjects.length} 个项目`);
+    
+    return validProjects;
+  } catch (error) {
+    console.error(`加载项目列表失败:`, error);
+    return [];
+  }
+};
+
+// 获取项目ID列表（直接使用index.json中的文件名）
+async function getProjectIds(language: string): Promise<string[]> {
+  const basePath = import.meta.env.BASE_URL || '/wyl-portfolio/';
+  const indexPath = `${basePath}content/projects/${language}/index.json`;
   
-  // Tableau 项目属性
-  // Update Tableau props interface
-  tableauProps?: {
-    vizId: string;
-    width: string;
-    height: string;
-    vizName: string;
-    staticImageSrc: string;
-    options?: {
-      hideTabs?: boolean;
-      hideToolbar?: boolean;
-      showShareOptions?: boolean;
-      allowPopups?: boolean;
-      device?: 'desktop' | 'tablet' | 'phone';
-    };
-  };
-
-  // D3 项目属性
-  d3Props?: {
-    sourceUrl: string;
-    previewImageUrl: string;
-    width?: string;
-    height?: string;
-    isEmbeddable: boolean;
-  };
-
-  // 通用项目属性（用于其他类型项目）
-  showcaseProps?: {
-    type: 'other' | 'custom';
-    owner?: string;
-    repo?: string;
-    branch?: string;
-    content?: React.ReactNode;
-    links?: Array<{
-      url: string;
-      label: string;
-    }>;
-  };
+  try {
+    const indexResponse = await fetch(indexPath);
+    if (!indexResponse.ok) {
+      throw new Error('索引文件加载失败');
+    }
+    
+    const indexData = await indexResponse.json();
+    const fileNames = indexData.projects || [];
+    console.log(`从${language}索引加载项目列表:`, fileNames);
+    return fileNames;
+  } catch (error) {
+    console.error('加载项目索引失败:', error);
+    return [];
+  }
 }
 
-export const projects: Project[] = [
-  {
-    id: 1,
-    title: "Chinese Calligraphy Visualization",
-    description: "An interactive exploration of Chinese calligraphy patterns and styles",
-    image: "https://public.tableau.com/static/images/Ir/IronViz2021ChineseCalligraphy/ChineseCalligraphy/1_rss.png",
-    category: "culture",
-    type: "tableau",
-    publishDate: "2021-06",
-    client: "Self-initiated",
-    dataSource: "Chinese Calligraphy Database",
-    link: "https://public.tableau.com/app/profile/yuri.wg/viz/IronViz2021ChineseCalligraphy/ChineseCalligraphy",
-    linkText: "Tableau Public",
-    tableauProps: {
-      vizId: 'viz1744185802632',
-      width: '100%',
-      height: 'auto',
-      vizName: 'IronViz2021ChineseCalligraphy/ChineseCalligraphy',
-      staticImageSrc: 'https://public.tableau.com/static/images/Ir/IronViz2021ChineseCalligraphy/ChineseCalligraphy/1_rss.png'
-    }
-  },
-  {
-    id: 2,
-    title: "跑步数据可视化",
-    description: "基于D3.js的互动式跑步数据可视化，展示运动轨迹、配速和相关统计数据。",
-    image: "images/projects/running-tracker.png",
-    category: "life",
-    type: "d3",
-    publishDate: "2023-12",
-    link: "https://github.com/YuriWG/running-tracker-react",
-    linkText: "GitHub 代码库",
-    client: "Self-initiated",
-    dataSource: "Strava跑步数据",
-    longDescription: `跑步数据可视化项目是一个基于D3.js的互动式数据可视化工具，将跑步轨迹和运动数据转化为直观的可视化展示。
-    项目支持显示跑步路线、配速变化、海拔变化等关键指标，并提供数据筛选和时间范围选择功能。
-    通过这个工具，跑步爱好者可以更好地分析自己的运动表现和进步轨迹。`,
+// 修改加载项目内容的函数
+export async function loadProjectContent(fileName: string, language: string): Promise<Project | null> {
+  try {
+    const lang = language.startsWith('zh') ? 'zh' : 'en';
+    const basePath = import.meta.env.BASE_URL || '/wyl-portfolio/';
     
-    d3Props: {
-      sourceUrl: "https://yuriwg.github.io/running-tracker-react/",
-      previewImageUrl: "images/projects/running-tracker.png",
-      width: "100%",
-      height: "auto",
-      isEmbeddable: true
+    // 直接使用文件名加载
+    const filePath = `${basePath}content/projects/${lang}/${fileName}.md`;
+    console.log(`尝试加载文件:`, filePath);
+
+    const response = await fetch(filePath);
+    if (!response.ok) {
+      throw new Error(`文件加载失败: ${response.status}`);
     }
-  },
-  {
-    id: 3,
-    title: "心情花园可视化",
-    description: "基于D3.js的互动式数据可视化，将每日心情数据以花朵形式展现，支持多种布局和主题色。",
-    image: "images/projects/mood-garden-preview.jpg", // 确保路径正确
-    category: "life",
-    type: "d3", // 使用 d3 类型
-    publishDate: "2023-08",
-    link: "https://github.com/YuriWg/mood-garden-viz",
-    linkText: "GitHub 代码库",
-    client: "Self-initiated",
-    dataSource: "模拟心情数据",
-    longDescription: `心情花园可视化项目是一个基于D3.js的互动式数据可视化实验，旨在将抽象的情绪数据转化为直观的视觉表达。
-    每个花朵代表一天的心情记录，花朵的大小和颜色反映心情指数的高低，支持随机布局和日历布局两种查看模式，并提供多种主题色切换功能。
-    该项目不仅实现了数据的可视化展示，还注重用户体验和交互性，可以帮助用户更好地理解和分析自己的情绪变化趋势。`,
+
+    const content = await response.text();
+    return await processMarkdownContent(content, fileName, lang);
+  } catch (error) {
+    console.error('加载项目内容失败:', error);
+    return null;
+  }
+}
+
+/**
+ * 根据ID获取单个项目
+ */
+export const getProjectById = async (id: string | number, language: string = 'en'): Promise<Project | null> => {
+  const lang = language.startsWith('zh') ? 'zh' : 'en';
+  
+  console.log(`开始获取项目, ID=${id}, 语言=${lang}`);
+
+  try {
+    // 1. 获取索引文件
+    const basePath = import.meta.env.BASE_URL || '/wyl-portfolio/';
+    const indexPath = `${basePath}content/projects/${lang}/index.json`;
     
-    // 使用统一的 d3Props 替代专属配置
-    d3Props: {
-      sourceUrl: "https://yuriwg.github.io/mood-garden-viz/", 
-      previewImageUrl: "images/projects/mood-garden-preview.jpg",
-      width: "100%",
-      height: "1200px",
-      isEmbeddable: true // 目前尚未部署到可嵌入的位置
+    console.log(`加载索引文件: ${indexPath}`);
+    const indexResponse = await fetch(indexPath);
+    if (!indexResponse.ok) {
+      console.error(`索引文件加载失败: ${indexResponse.status}`);
+      return null;
     }
-  },
-  {
-    id: 4,
-    title: "极简主义挑战",
-    description: "基于D3.js的互动式数据可视化，展示100天极简主义挑战的过程和成果。",
-    image: "images/projects/minimalism-preview.png",
-    category: "life",
-    type: "d3",
-    publishDate: "2024-01",
-    link: "https://github.com/YuriWG/minimalism-challenge",
-    linkText: "GitHub 代码库",
-    client: "Self-initiated",
-    dataSource: "个人极简主义挑战数据",
-    longDescription: `极简主义挑战项目是一个记录和可视化100天极简主义生活的实验。
-    通过D3.js将每天的物品整理数据转化为直观的可视化展示，帮助人们理解极简主义生活方式的实践过程。
-    项目展示了物品数量的变化趋势，以及不同类别物品的分布情况。`,
     
-    d3Props: {
-      sourceUrl: "https://yuriwg.github.io/minimalism-challenge/",
-      previewImageUrl: "images/projects/minimalism-preview.png",
-      width: "100%",
-      height: "1400px",
-      isEmbeddable: true
-    }
-  },
-  // 添加你的 Tableau 作品
-  {
-    id: 6,
-    title: "碳中和",
-    description: "关于碳中和的数据可视化分析",
-    image: "https://public.tableau.com/static/images/_1/_16205984439490/CarbonNeutralization/1_rss.png",
-    category: "climate",
-    type: "tableau",
-    publishDate: "2021-05",
-    link: "https://public.tableau.com/views/_16205984439490/CarbonNeutralization",
-    linkText: "Tableau Public",
-    tableauProps: {
-      vizId: 'viz1744448793486',
-      width: '100%',
-      height: 'auto',
-      vizName: '_16205984439490/CarbonNeutralization',
-      staticImageSrc: 'https://public.tableau.com/static/images/_1/_16205984439490/CarbonNeutralization/1_rss.png',
-      options: {
-        hideTabs: true,
-        hideToolbar: false,
-        showShareOptions: true,
-        device: 'desktop'
+    const indexData = await indexResponse.json();
+    const projects = indexData.projects || [];
+    
+    // 2. 确定实际的文件名
+    let fileName: string;
+    let numericId: number | null = null;
+    
+    // 尝试确定文件名
+    if (/^\d+$/.test(id.toString())) {
+      // 如果是数字ID (如 "1", "2"...), 从索引中获取相应位置的项目名
+      const idx = parseInt(id.toString()) - 1;
+      if (idx < 0 || idx >= projects.length) {
+        console.error(`无效的数字ID: ${id}, 索引范围: 0-${projects.length-1}`);
+        return null;
       }
+      fileName = projects[idx];
+      numericId = parseInt(id.toString());
+      console.log(`数字ID ${id} 对应文件名: "${fileName}"`);
+    } else {
+      // 如果不是数字，假设已经是文件名
+      // 不区分大小写查找
+      const fileNameLower = id.toString().toLowerCase();
+      const matchIndex = projects.findIndex((p: string) => p.toLowerCase() === fileNameLower);
+      
+      if (matchIndex === -1) {
+        console.error(`项目文件 "${id}" 不在索引中`);
+        return null;
+      }
+      
+      // 使用索引中的准确文件名（保持大小写一致）
+      fileName = projects[matchIndex];
+      numericId = matchIndex + 1;
+      console.log(`直接使用文件名: "${fileName}", 对应ID: ${numericId}`);
     }
-  },
-  {
-    id: 7,
-    title: "汇率变化",
-    description: "汇率变化趋势的可视化分析",
-    image: "https://public.tableau.com/static/images/Th/The6thVizChallengeTheExchangeRate/sheet0/1_rss.png",
-    category: "society",
-    type: "tableau",
-    publishDate: "2021-08", // 添加发布时期
-    link: "https://public.tableau.com/views/The6thVizChallengeTheExchangeRate/sheet0",
-    linkText: "Tableau Public",
-    tableauProps: {
-      vizId: 'viz1744187308580',
-      width: '100%',
-      height: 'auto',
-      vizName: 'The6thVizChallengeTheExchangeRate/sheet0',
-      staticImageSrc: 'https://public.tableau.com/static/images/Th/The6thVizChallengeTheExchangeRate/sheet0/1_rss.png'
+    
+    // 3. 加载项目文件
+    const filePath = `${basePath}content/projects/${lang}/${fileName}.md`;
+    console.log(`加载项目文件: ${filePath}`);
+    
+    const response = await fetch(filePath);
+    if (!response.ok) {
+      console.error(`项目文件加载失败: ${response.status}`);
+      
+      // 如果当前不是英文，尝试回退到英文版本
+      if (lang !== 'en') {
+        console.log('尝试回退到英文版本...');
+        return await getProjectById(numericId || id, 'en');
+      }
+      
+      return null;
     }
-  },
-  {
-    id: 8,
-    title: "信息可视化",
-    description: "信息可视化设计作品",
-    image: "https://public.tableau.com/static/images/in/infowetrustmakeovermonday2019week16/1/1_rss.png",
-    category: "culture",
-    type: "tableau",
-    publishDate: "2021-11", // 添加发布时期
-    link: "https://public.tableau.com/views/infowetrustmakeovermonday2019week16/1",
-    linkText: "Tableau Public",
-    tableauProps: {
-      vizId: 'viz1744187339506',
-      width: '1366px',
-      height: '827px',
-      vizName: 'infowetrustmakeovermonday2019week16/1',
-      staticImageSrc: 'https://public.tableau.com/static/images/in/infowetrustmakeovermonday2019week16/1/1_rss.png'
+    
+    const content = await response.text();
+    
+    // 4. 处理内容，并确保设置正确的ID
+    const project = await processMarkdownContent(content, fileName, lang);
+    
+    // 设置正确的数字ID
+    if (numericId) {
+      project.id = numericId.toString();
     }
-  },
-  // 添加新的作品
-  {
-    id: 9,
-    title: "50个最佳城市",
-    description: "全球50个最佳城市的数据可视化分析",
-    image: "https://public.tableau.com/static/images/50/50_15655374759590/1/1_rss.png",
-    category: "society",
-    type: "tableau",
-    publishDate: "2023-02", // 添加发布时期
-    link: "https://public.tableau.com/views/50_15655374759590/1",
-    linkText: "Tableau Public",
-    tableauProps: {
-      vizId: 'viz1744187429364',
-      width: '827px',
-      height: '1196px',
-      vizName: '50_15655374759590/1',
-      staticImageSrc: 'https://public.tableau.com/static/images/50/50_15655374759590/1/1_rss.png'
-    }
-  },
-  {
-    id: 10,
-    title: "H.R. Giger - 夜晚绘制怪物的人",
-    description: "关于艺术家H.R. Giger作品和生平的可视化分析",
-    image: "https://public.tableau.com/static/images/H_/H_R_Giger_Themanwhopaintsmonstersinthenight/EN/1_rss.png",
-    category: "culture",
-    type: "tableau",
-    publishDate: "2023-05", // 添加发布时期
-    tableauProps: {
-      vizId: 'viz1744189364262',
-      width: '100%',
-      height: 'auto',
-      vizName: 'H_R_Giger_Themanwhopaintsmonstersinthenight/EN',
-      staticImageSrc: 'https://public.tableau.com/static/images/H_/H_R_Giger_Themanwhopaintsmonstersinthenight/EN/1_rss.png'
-    }
-  },
+    
+    console.log(`项目加载成功:`, {
+      id: project.id,
+      title: project.title,
+      language: lang,
+      type: project.type,
+      fileName: fileName
+    });
+    
+    return project;
+  } catch (error) {
+    console.error(`项目加载失败:`, error);
+    return null;
+  }
+};
 
-  
-];
+/**
+ * 清除项目缓存
+ */
+export const clearProjectCache = (language?: string) => {
+  if (language) {
+    const lang = language.startsWith('zh') ? 'zh' : 'en';
+    projectCache[lang] = {};
+  } else {
+    Object.keys(projectCache).forEach(lang => {
+      projectCache[lang] = {};
+    });
+  }
+};
 
-export default projects;
-
-// 文档属性接口
-export interface DocumentationProps {
-  type: 'github' | 'custom';
-  // GitHub 类型特有属性
-  owner?: string;
-  repo?: string;
-  branch?: string;
-  // 自定义内容类型特有属性
-  content?: React.ReactNode;
-  // 通用属性
-  links?: ProjectLink[];
-}
-
-export interface ProjectLink {
-  url: string;
-  label: string;
-}
-
+/**
+ * 按条件筛选项目
+ */
+export const filterProjects = (
+  projects: Project[], 
+  params: ProjectQueryParams
+): Project[] => {
+  return projects.filter(project => {
+    if (params.language && project.language !== params.language) return false;
+    if (params.category && project.category !== params.category) return false;
+    if (params.type && project.type !== params.type) return false;
+    return true;
+  });
+};

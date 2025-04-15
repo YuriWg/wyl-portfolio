@@ -1,0 +1,257 @@
+
+# wyl-portfolio 项目开发文档
+
+## 项目概述
+
+`wyl-portfolio` 是一个使用 React、TypeScript 和 Vite 构建的个人作品集网站。该网站展示了多种数据可视化项目，包括 D3.js 和 Tableau 作品，并支持中英文双语切换。
+
+## 技术栈
+
+- **前端框架**：React 18
+- **语言**：TypeScript
+- **构建工具**：Vite
+- **路由**：React Router DOM v6
+- **国际化**：i18next
+- **可视化库**：D3.js, Tableau API
+- **样式**：Tailwind CSS
+
+## 项目结构
+
+```
+wyl-portfolio/
+├── public/                 # 静态资源
+│   ├── images/             # 项目图片资源
+│   │   ├── projects/       # 项目截图
+│   │   └── icons/          # 图标
+│   ├── content/            # 静态内容文件
+│   │   └── projects/       # 项目Markdown文件
+│   │       ├── en/         # 英文项目内容
+│   │       └── zh/         # 中文项目内容
+│   ├── locales/            # 国际化静态资源
+│   ├── templates/          # 可下载的Obsidian模板
+│   └── manifest.json       # PWA配置文件
+├── src/                    # 源代码
+│   ├── assets/             # 项目内部资源文件
+│   │   └── images/         # 项目内部图片资源
+│   ├── components/         # React组件
+│   │   ├── ProjectCard.tsx     # 项目卡片组件
+│   │   ├── ProjectDetail.tsx   # 项目详情组件
+│   │   ├── TableauEmbed.tsx    # Tableau可视化嵌入组件
+│   │   ├── D3Embed.tsx         # D3.js可视化嵌入组件
+│   │   ├── GitHubReadme.tsx    # GitHub README显示组件
+│   │   └── LanguageSwitch.tsx  # 语言切换组件
+│   ├── content/            # 内容管理
+│   │   └── projects/       # 项目Markdown文件
+│   ├── pages/              # 页面组件
+│   │   ├── HomePage.tsx    # 首页
+│   │   ├── ProjectPage.tsx # 项目详情页
+│   │   ├── AboutPage.tsx   # 关于页面
+│   │   └── BlogPage.tsx    # 博客页面
+│   ├── data/               # 数据文件
+│   │   ├── projects.ts     # 项目数据和类型定义
+│   │   ├── articles.ts     # 博客文章数据
+│   │   └── projectMapping.ts # 项目映射配置
+│   ├── hooks/              # 自定义React hooks
+│   │   └── useProjects.ts  # 项目数据处理hook
+│   ├── types/              # TypeScript类型定义
+│   │   └── project.ts      # 项目相关类型定义
+│   ├── utils/              # 工具函数
+│   │   ├── projectImages.ts # 项目图片处理工具
+│   │   └── markdownLoader.ts # Markdown加载工具
+│   ├── i18n/               # 国际化
+│   │   ├── config.ts       # i18n配置
+│   │   └── locales/        # 翻译文件
+│   │       ├── en/         # 英文翻译
+│   │       │   └── project.json # 项目相关英文翻译
+│   │       └── zh/         # 中文翻译
+│   │           └── project.json # 项目相关中文翻译
+│   ├── styles/             # 样式文件
+│   │   └── index.css       # 全局样式
+│   ├── App.tsx             # 应用主组件
+│   ├── main.tsx            # 应用入口点
+│   ├── index.css           # 全局CSS入口
+│   └── vite-env.d.ts       # Vite类型声明
+├── scripts/                # 构建和部署脚本
+│   └── scanProjects.js     # 项目扫描脚本
+├── .github/                # GitHub配置
+│   └── workflows/          # GitHub Actions工作流
+│       └── deploy.yml      # 自动部署配置
+├── .gitignore              # Git忽略文件
+├── index.html              # HTML模板
+├── package.json            # 项目依赖
+├── tailwind.config.js      # Tailwind CSS配置
+├── postcss.config.js       # PostCSS配置
+├── eslint.config.js        # ESLint配置
+├── tsconfig.json           # TypeScript主配置
+├── tsconfig.app.json       # 应用TypeScript配置
+├── tsconfig.node.json      # Node环境TypeScript配置
+└── vite.config.ts          # Vite构建配置
+```
+
+## 路由配置
+
+项目使用 React Router v6 进行路由管理，支持以下路由：
+- `/` - 主页，展示项目列表
+- `/project/:id` - 项目详情页，展示特定项目
+- `/about` - 关于页面
+- `/blog` - 博客页面
+
+路由配置位于 main.tsx，使用 `BrowserRouter` 组件并设置动态基础路径 `basename={import.meta.env.BASE_URL}`，确保在不同部署环境中正确工作。
+
+## 多平台部署
+
+项目同时支持两个部署平台：
+
+### GitHub Pages
+- 访问地址：https://yuriwg.github.io/wyl-portfolio/
+- 基础路径：`/wyl-portfolio/`
+- 构建命令：`npm run build:github` (执行 `vite build --base=/wyl-portfolio/`)
+
+### Cloudflare Pages
+- 访问地址：https://wyl-portfolio.pages.dev/
+- 基础路径：`/`
+- 构建命令：`npm run build:cloudflare` (执行 `vite build --base=/`)
+
+## 数据模型
+### 项目数据
+项目数据现在支持两种存储方式：
+1. TypeScript对象（projects.ts）
+2. Markdown文件（public/content/projects/）
+
+每个项目对象包含以下主要字段：
+- `id`: 唯一标识符
+- `title`: 项目标题
+- `description`: 简短描述
+- `image`: 项目预览图
+- `category`: 项目分类
+- `type`: 项目类型 (tableau, d3, other, custom)
+- `publishDate`: 发布日期
+- `client`: 客户名称
+- `dataSource`: 数据来源
+- `link`: 主要外部链接
+- 特定类型属性 (如 `d3Props` 或 `tableauProps`)
+
+### 项目映射
+`projectMapping.ts` 文件负责将项目ID映射到对应的Markdown文件名，支持多语言内容管理。
+
+### 博客文章
+`articles.ts` 定义了博客文章的数据结构，包括标签系统：
+```typescript
+export interface Tag {
+  id: string;  // 唯一标识，用于匹配和筛选
+  en: string;  // 英文标签文本
+  zh: string;  // 中文标签文本
+  localizedText?: string; // 根据当前语言本地化的文本
+}
+
+## 国际化
+
+项目使用 i18next 实现中英文双语支持，配置位于 src/i18n/config.ts 。语言文件存储在 src/i18n/locales/ 目录下，按语言和功能模块分类：
+
+- en/ - 英文翻译
+  - project.json - 项目相关英文翻译
+- zh/ - 中文翻译
+  - project.json - 项目相关中文翻译
+项目内容也支持多语言版本，存储在 public/content/projects/ 目录下：
+
+- en/ - 英文项目内容
+- zh/ - 中文项目内容
+
+
+## 构建与部署
+
+### 本地开发
+```bash
+npm install
+npm run dev
+```
+
+### 构建生产版本
+```bash
+# GitHub Pages
+npm run build:github
+
+# Cloudflare Pages
+npm run build:cloudflare
+```
+
+### 自动部署
+
+项目使用 GitHub Actions 自动部署到 GitHub Pages，配置位于 deploy.yml。每当代码推送到主分支时，会自动触发构建和部署流程。
+
+Cloudflare Pages 通过与 GitHub 仓库的集成实现自动部署，使用自定义构建命令 `npm run build:cloudflare`。
+
+## 内容管理
+### Markdown项目文件
+项目内容使用Markdown格式存储，支持YAML前置元数据。标准模板如下：
+```markdown
+---
+---
+```
+
+### 项目索引
+每种语言的项目列表通过 index.json 文件管理，位于 public/content/projects/{语言}/ 目录下。
+
+## 注意事项
+
+1. **路由配置**：子路由路径不应以斜杠开头（如 `path="project/:id"` 而非 `/project/:id`）
+2. **资源路径**：使用相对路径引用资源文件，或通过 `import.meta.env.BASE_URL` 构建完整路径
+3. **多平台部署**：使用不同的构建命令为不同平台生成正确的基础路径配置
+4. **SPA 路由**：确保 `public/_redirects` 文件正确配置，以支持客户端路由
+5. **图片资源管理** ：区分 public/images/ 和 src/assets/images/ 的使用场景
+6. **内容缓存** ：使用 clearProjectCache 函数在需要时清除项目数据缓存
+
+## 常见问题处理
+
+1. **404 错误**：检查基础路径 (`base`) 配置是否正确
+2. **资源加载失败**：确保资源路径使用相对路径或考虑部署环境的基础路径
+3. **路由不匹配**：检查 `BrowserRouter` 的 `basename` 配置和路由定义
+4. **部署问题**：查看构建命令是否正确设置基础路径参数
+5. **项目内容不更新** ：可能需要清除缓存，调用 clearProjectCache() 函数
+
+## 扩展与维护
+
+### 添加新项目
+现在有两种方式添加新项目：
+
+1. 编辑 src/data/projects.ts 文件，添加新的项目对象
+2. 在 src/content/projects/ 目录下创建新的 Markdown 文件（推荐）
+
+### 添加新页面
+创建页面组件并在 main.tsx 中添加相应的路由配置。
+
+## 下一步行动
+- [-] 使用 Markdown 管理项目信息：将项目信息从 TypeScript 迁移到 Markdown 文件可以使内容管理更直观、更方便非开发人员编辑，同时能支持更丰富的格式。
+    - 创建 src/content 目录和示例项目文件
+    - 编写 Markdown 加载工具
+    - 更新组件以使用 Markdown 数据
+   
+- [-] 多语言内容管理与 AI 翻译
+    - [-] 设置翻译服务集成
+        - 研究可用的翻译API（如Google Cloud Translation, DeepL, OpenAI）
+        - 创建翻译服务接口
+        - 实现翻译请求和响应处理
+    - [] 创建缓存机制减少 API 调用
+    - [-] 更新组件以支持动态语言切换
+
+- [] 统一页面风格
+    - [-] 创建共享布局组件
+        - 设计Header和Footer组件
+        - 实现响应式布局
+    - [] 设置全局样式变量
+    - [] 应用一致的设计模式到所有页面
+        - 统一卡片样式
+        - 标准化按钮和交互元素
+- [] 性能优化
+    - [] 实现图片懒加载
+    - [] 添加组件代码分割
+    - [] 优化大型可视化组件的加载
+
+## 参考资料
+- D3.js官方文档: https://d3js.org/
+- 《可视化数据》(Visualizing Data) - Ben Fry
+- 《The Visual Display of Quantitative Information》- Edward Tufte
+- Observable中的日历热图示例: https://observablehq.com/@d3/calendar-view
+- 《Interactive Data Visualization for the Web》- Scott Murray
+- i18next文档: https://www.i18next.com/
+- React Router文档: https://reactrouter.com/

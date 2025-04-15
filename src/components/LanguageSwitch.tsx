@@ -13,8 +13,13 @@ const LanguageSwitch: React.FC = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="flex items-center space-x-2 hover:text-gray-600 transition-colors"
+      className="flex items-center space-x-2 hover:text-gray-600 transition-colors text-5xl font-bold cursor-pointer p-0 bg-transparent"
       aria-label="Switch language"
+      style={{
+        fontFamily: i18n.language === 'zh' ? 
+          '"Microsoft YaHei", "微软雅黑", SimHei, "黑体", sans-serif' : 
+          '"Comic Sans MS", "Comic Sans", cursive, sans-serif'
+      }}
     >
       <Languages className="w-5 h-5" />
       <span className="text-sm font-medium">{i18n.language.toUpperCase()}</span>

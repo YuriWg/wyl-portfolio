@@ -1,0 +1,36 @@
+{
+  "header": {
+    "title": "DataViz Portfolio"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "blog": "Blog",
+    "tableau":"Tableau Public",
+    "github":"GitHub",
+    "contact":"Contact"
+  },
+  "hero": {
+    "title": "Data Stories That Matter",
+    "subtitle": "Exploring the world through data visualization, interactive storytelling, and knowledge management"
+  },
+  "footer": {
+    "copyright": "© 2025 WYL. All rights reserved."
+  },
+  "categories": {
+    "all": "All",
+    "pkm": "PKM",
+    "society": "Society",
+    "culture": "Culture",
+    "life": "Life",
+    "other": "Other"
+  },
+  "tools": {
+    "all": "All Tools",
+    "tableau": "Tableau",
+    "d3": "D3.js",
+    "python": "Python",
+    "obsidian": "Obsidian",
+    "other": "Other"
+  }
+}

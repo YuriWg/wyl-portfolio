@@ -1,0 +1,38 @@
+{
+  "backToHome": "Back to Home",
+  "name": "Yuli Wang",
+  "title": "Data Visualization Designer & Developer",
+  "aboutMe": "About Me",
+  "bio": "I am a designer and developer focused on data visualization and interactive storytelling. I am passionate about transforming complex data into intuitive, engaging visual experiences.",
+  "skills": "Skills",
+  "skill1": "Data Visualization Design",
+  "skill2": "Tableau, D3.js, Python",
+  "skill3": "Interactive Storytelling",
+  "skill4": "Data Analysis & Processing",
+  "experience": "Experience",
+  "job1": {
+    "title": "Senior Data Visualization Designer",
+    "company": "Company Name",
+    "period": "2020 - Present",
+    "description": "Responsible for designing and developing interactive data visualizations, providing data insights and storytelling solutions for clients."
+  },
+  "job2": {
+    "title": "Data Analyst",
+    "company": "Company Name",
+    "period": "2018 - 2020",
+    "description": "Responsible for data collection, cleaning, and analysis to support business decisions."
+  },
+  "education": "Education",
+  "education1": {
+    "degree": "Master of Data Science",
+    "school": "University Name",
+    "period": "2016 - 2018"
+  },
+  "interest": "Interest",
+  "interest1": "Hiking",
+  "interest2": "Reading",
+  "interest3": "Running",
+  "interest4": "Chinese Calligraphy",
+  "officialAccount": "Official WeChat Account",
+  "scanWeChatQRCode": "Please scan the QR code to follow"
+}
