@@ -7,13 +7,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* 使用Comic Sans MS作为主字体 */
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    /* 使用Comic Sans MS作为主字体，同时提供中文字体回退 */
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
   }
   
   body {
     @apply antialiased;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
     background-color: #ffffff;
     /* 添加手绘风格的背景 */
     background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%239C92AC' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E"),
@@ -289,7 +289,7 @@
 
 /* 文本样式 */
 .sticker-text {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
   font-weight: bold;
   letter-spacing: 0.5px;
   /* 移除阴影、边框和背景色 */
@@ -300,7 +300,7 @@
 }
 
 .sticker-title {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
   font-weight: bold;
   font-size: 2.5rem;
   letter-spacing: 1px;
@@ -308,7 +308,7 @@
 }
 
 .sticker-hero-title {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
   font-weight: bold;
   font-size: 3rem;
   letter-spacing: 1px;
@@ -321,7 +321,7 @@
 }
 
 .sticker-hero-subtitle {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
   font-size: 1.2rem;
   transform: rotate(1deg);
   display: inline-block;
@@ -342,6 +342,7 @@
 
 /* 添加工具提示效果 */
 .sticker-nav-item::after {
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
   content: attr(title);
   position: absolute;
   bottom: -30px;
@@ -353,7 +354,6 @@
   /* 移除边框 */
   border: none;
   border-radius: 8px;
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
   font-weight: bold;
   font-size: 0.8rem;
   white-space: nowrap;
@@ -364,7 +364,7 @@
 }
 
 .sticker-text-small {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
   font-weight: bold;
   background-color: white;
   padding: 2px 6px;
@@ -384,7 +384,7 @@
 
 /* 按钮样式 */
 .sticker-button {
-  font-family: 'Microsoft YaHei', '微软雅黑', 'Comic Sans MS', 'Comic Sans', cursive, SimHei, '黑体', sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
   font-weight: bold;
   background-color: white;
   color: black;
@@ -415,7 +415,7 @@
 
 /* 替代按钮样式 - 橙黄色 */
 .sticker-button-alt {
-  font-family: 'Microsoft YaHei', '微软雅黑', 'Comic Sans MS', 'Comic Sans', cursive, SimHei, '黑体', sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
   font-weight: bold;
   background-color: white;
   color: black;
@@ -445,7 +445,7 @@
 
 /* 为筛选器按钮添加特定的样式 */
 .filter-button {
-  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
   font-weight: bold;
   padding: 0.5rem 1.5rem;
   border-radius: 30px;
@@ -614,7 +614,7 @@
 
 /* 链接按钮样式 */
 .sticker-link-button {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -808,18 +808,6 @@
   opacity: 0.6;
 }
 
-/* 确保中文显示正确 */
-:lang(zh),
-[lang="zh"],
-[lang="zh-cn"],
-.zh-text {
-  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif;
-}
-
-/* 确保图片上的全部按钮的文本正确显示 */
-.button-text-zh {
-  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
-}
 
 
 /* 添加到现有 index.css 底部 */
@@ -853,17 +841,7 @@ body:has([title*="文"]):after {
   font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
 }
 
-/* 添加这部分到文件底部，确保覆盖所有中文内容 */
 
-/* 全局中文字体设置 */
-html:lang(zh),
-html[lang="zh"],
-html[lang="zh-cn"],
-body:lang(zh),
-body[lang="zh"],
-body[lang="zh-cn"] {
-  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
-}
 
 /* 项目详情页专用样式 */
 .prose h1,
@@ -1003,3 +981,4 @@ html[lang="zh-cn"] [dangerouslySetInnerHTML] {
   mix-blend-mode: overlay;
   pointer-events: none;
 }
+

@@ -66,7 +66,7 @@ const Header: React.FC = () => {
           </Link>
           
           {/* 右侧图标导航 */}
-          <nav className="flex items-center space-x-5"> {/* 减小间距 */}
+          <nav className="flex items-center space-x-3"> {/* 减小间距 */}
             {/* 语言切换 - 使用更新后的LanguageSwitch组件 */}
             <div 
                 className="sticker-nav-item lang-switch-container" 
