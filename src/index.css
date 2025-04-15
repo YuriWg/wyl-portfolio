@@ -290,7 +290,7 @@
 
 /* 文本样式 */
 .sticker-text {
-  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   letter-spacing: 0.5px;
   /* 移除阴影、边框和背景色 */
@@ -301,7 +301,7 @@
 }
 
 .sticker-title {
-  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   font-size: 2.5rem;
   letter-spacing: 1px;
@@ -309,7 +309,7 @@
 }
 
 .sticker-hero-title {
-  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   font-size: 3rem;
   letter-spacing: 1px;
@@ -322,7 +322,7 @@
 }
 
 .sticker-hero-subtitle {
-  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.2rem;
   transform: rotate(1deg);
   display: inline-block;
@@ -343,7 +343,7 @@
 
 /* 添加工具提示效果 */
 .sticker-nav-item::after {
-  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   content: attr(title);
   position: absolute;
   bottom: -30px;
@@ -365,7 +365,7 @@
 }
 
 .sticker-text-small {
-  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   background-color: white;
   padding: 2px 6px;
@@ -385,7 +385,7 @@
 
 /* 按钮样式 */
 .sticker-button {
-  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   background-color: white;
   color: black;
@@ -416,7 +416,7 @@
 
 /* 替代按钮样式 - 橙黄色 */
 .sticker-button-alt {
-  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   background-color: white;
   color: black;
@@ -446,7 +446,7 @@
 
 /* 为筛选器按钮添加特定的样式 */
 .filter-button {
-  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   padding: 0.5rem 1.5rem;
   border-radius: 30px;
@@ -615,7 +615,7 @@
 
 /* 链接按钮样式 */
 .sticker-link-button {
-  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Marker Felt', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -943,7 +943,7 @@ html[lang="zh-cn"] [dangerouslySetInnerHTML] {
 
 /* 默认字体类 */
 .font-comic {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "Comic Sans MS", sans-serif;
 }
 
 /* 通过语言属性选择器应用字体（可选的高级功能） */
@@ -952,7 +952,7 @@ html[lang="zh-cn"] [dangerouslySetInnerHTML] {
 }
 
 [lang="en"] * {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "Comic Sans MS", sans-serif;
 }
 
 /* 贴纸风格头像 */
