@@ -81,11 +81,6 @@ const ProjectDetail: React.FC = () => {
     }
   }, [project, id, i18n.language]);
 
-  const zhFontStyle = isZh
-    ? {
-        fontFamily: '"Microsoft YaHei", "微软雅黑", SimHei, "黑体", sans-serif !important',
-      }
-    : {};
 
   // 如果正在加载，显示更详细的加载状态
   if (loading) {
@@ -161,7 +156,7 @@ const ProjectDetail: React.FC = () => {
             className="text-4xl font-bold text-white text-center max-w-4xl px-6 sticker-title"
             style={{
               color: 'white',
-              ...zhFontStyle,
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
             }}
           >
             {project.title}
@@ -169,16 +164,15 @@ const ProjectDetail: React.FC = () => {
         </div>
       </div>
 
-      <div ref={contentRef} className="max-w-4xl mx-auto px-6 py-12" style={zhFontStyle}>
+      <div ref={contentRef} className="max-w-4xl mx-auto px-6 py-12" >
         <h2
           className={`sticker-detail-title flex items-center mb-4 ${isZh ? 'zh-text' : ''}`}
-          style={zhFontStyle}
         >
           {t('Info')}
         </h2>
         <div className="sticker-showcase sticker-detail-card mb-12" >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="space-y-6" style={zhFontStyle}>
+            <div className="space-y-6">
               <div>
                 <div className="flex items-center text-gray-700 mb-2">
                   <User className="w-5 h-5 mr-2" />
@@ -200,7 +194,7 @@ const ProjectDetail: React.FC = () => {
               </div>
             </div>
 
-            <div className="space-y-6" style={zhFontStyle}>
+            <div className="space-y-6">
               <div>
                 <div className="flex items-center text-gray-700 mb-2">
                   <Wrench className="w-5 h-5 mr-2" />
@@ -222,7 +216,7 @@ const ProjectDetail: React.FC = () => {
               </div>
             </div>
 
-            <div className="space-y-6" style={zhFontStyle}>
+            <div className="space-y-6">
               <div>
                 <div className="flex items-center text-gray-700 mb-2">
                   <Calendar className="w-5 h-5 mr-2" />
@@ -264,18 +258,16 @@ const ProjectDetail: React.FC = () => {
         <div
           className="mb-12"
           style={{
-            ...zhFontStyle,
           }}
           data-lang={isZh ? 'zh' : 'en'}
         >
           {project.contentHtml ? (
             <div
               dangerouslySetInnerHTML={{ __html: project.contentHtml }}
-              style={zhFontStyle}
               className="markdown-content prose prose-lg max-w-none" // 添加 prose 类但覆盖最大宽度
             />
           ) : (
-            <p style={zhFontStyle} className="w-full text-gray-600">
+            <p className="w-full text-gray-600">
               {project.description}
             </p>
           )}
