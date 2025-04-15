@@ -311,7 +311,7 @@
 .sticker-hero-title {
   font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 3.5rem;
   letter-spacing: 1px;
   /* 移除阴影、边框和背景色 */
   filter: none;
@@ -323,7 +323,7 @@
 
 .sticker-hero-subtitle {
   font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   transform: rotate(1deg);
   display: inline-block;
   margin-top: 0.5rem;
@@ -860,7 +860,7 @@ body:has([title*="文"]):after {
   font-family: inherit;
 }
 
-/* 确保项目描述中的中文使用微软雅黑 */
+/* 确保项目描述中的中文使用微软雅黑 
 html:lang(zh) .prose,
 html[lang="zh"] .prose,
 html[lang="zh-cn"] .prose,
@@ -873,20 +873,20 @@ html[lang="zh-cn"] .sticker-detail-card {
   font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
 }
 
-/* 使用更强的选择器覆盖详情页中的文本 */
+/* 使用更强的选择器覆盖详情页中的文本 
 html:lang(zh) .prose *,
 html[lang="zh"] .prose *,
 html[lang="zh-cn"] .prose * {
   font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
 }
 
-/* 确保 dangerouslySetInnerHTML 渲染的内容也使用正确的字体 */
+/* 确保 dangerouslySetInnerHTML 渲染的内容也使用正确的字体 
 html:lang(zh) [dangerouslySetInnerHTML],
 html[lang="zh"] [dangerouslySetInnerHTML],
 html[lang="zh-cn"] [dangerouslySetInnerHTML] {
   font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
 }
-
+*/
 /* About页面特定样式 */
 .about-content {
   max-width: none;
@@ -936,24 +936,24 @@ html[lang="zh-cn"] [dangerouslySetInnerHTML] {
   margin-right: 1rem;
 }
 
-/* 中文字体类 */
+/* 中文字体类 
 .font-chinese {
   font-family: "Microsoft YaHei", "微软雅黑", SimHei, "黑体", sans-serif;
 }
 
-/* 默认字体类 */
+/* 默认字体类 
 .font-comic {
   font-family: "Comic Sans MS", sans-serif;
 }
 
-/* 通过语言属性选择器应用字体（可选的高级功能） */
+/* 通过语言属性选择器应用字体（可选的高级功能） 
 [lang="zh"] * {
   font-family: "Microsoft YaHei", "微软雅黑", SimHei, "黑体", sans-serif;
 }
 
 [lang="en"] * {
   font-family: "Comic Sans MS", sans-serif;
-}
+}*/
 
 /* 贴纸风格头像 */
 .sticker-card-avatar {

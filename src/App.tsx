@@ -101,10 +101,10 @@ function App() {
       {/* 英雄区域 - 手绘风格 */}
       <section className=" px-5 pt-40 pb-0 hero-section">
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="sticker-title mb-4" style={{ fontFamily: 'Comic Sans MS', fontSize: '3.5rem' }}>
+          <h1 className="sticker-hero-title mb-4" >
             {t('hero.title', { ns: 'common' })}
           </h1>
-          <p className="sticker-subtitle max-w-3xl mx-auto" style={{ fontFamily: 'Comic Sans MS', fontSize: '1.5rem' }}>
+          <p className="sticker-hero-subtitle max-w-3xl mx-auto">
             {t('hero.subtitle', { ns: 'common' })}
           </p>
         </div>
