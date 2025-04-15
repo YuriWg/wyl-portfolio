@@ -936,23 +936,23 @@ html[lang="zh-cn"] [dangerouslySetInnerHTML] {
   margin-right: 1rem;
 }
 
-/* 中文字体类 
+/* 中文字体类 */
 .font-chinese {
   font-family: "Microsoft YaHei", "微软雅黑", SimHei, "黑体", sans-serif;
 }
 
-/* 默认字体类 
+/* 默认字体类 */
 .font-comic {
-  font-family: "Comic Sans MS", sans-serif;
+  font-family: "Comic Sans MS","Comic Sans", sans-serif;
 }
 
-/* 通过语言属性选择器应用字体（可选的高级功能） 
+/* 通过语言属性选择器应用字体（可选的高级功能） */
 [lang="zh"] * {
   font-family: "Microsoft YaHei", "微软雅黑", SimHei, "黑体", sans-serif;
 }
 
 [lang="en"] * {
-  font-family: "Comic Sans MS", sans-serif;
+  font-family: "Comic Sans MS", "Comic Sans", sans-serif;
 }*/
 
 /* 贴纸风格头像 */
