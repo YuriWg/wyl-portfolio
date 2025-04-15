@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -980,5 +981,58 @@ html[lang="zh-cn"] [dangerouslySetInnerHTML] {
   border-radius: 50%;
   mix-blend-mode: overlay;
   pointer-events: none;
+}
+/* 移动端导航栏优化 - 添加到文件末尾 */
+@media (max-width: 640px) {
+  /* 缩小导航栏元素间距 */
+  header .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  /* 确保Logo有足够的可点击区域 */
+  header .flex.items-center {
+    padding: 3px;
+    margin-right: 5px;
+    z-index: 10; /* 确保Logo在最上层 */
+  }
+  
+  /* 缩小导航栏按钮大小 */
+  .sticker-icon {
+    padding: 2px;
+  }
+  
+  /* 调整语言切换按钮大小 */
+  .language-switcher button {
+    padding: 2px 8px;
+    font-size: 0.85rem;
+  }
+  
+  /* 调整导航栏高度 */
+  header.py-4 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  header.py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* 缩小Logo图片大小 */
+  header img.h-10 {
+    height: 32px;
+  }
+  
+  /* 减小导航项之间的间距 */
+  .sticker-nav-item {
+    margin-left: 20px;
+    margin-right: 0px;
+  }
+  
+  /* 优化导航栏布局 */
+  header .flex.justify-between {
+    gap: 8px;
+  }
 }
 
