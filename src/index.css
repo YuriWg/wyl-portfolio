@@ -13,11 +13,19 @@
   font-display: swap; /* 确保字体加载时的良好体验 */
 }
 
+@font-face {
+  font-family: 'Fredoka One';
+  src: url('/fonts/FredokaOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     /* 使用Comic Sans MS作为主字体，同时提供中文字体回退 */
-    font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Fredoka One','Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   body {
@@ -317,8 +325,8 @@
 }
 
 .sticker-hero-title {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: bold;
+  font-family: 'Comic Sans MS', 'Fredoka One', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 1000;
   font-size: 3.5rem;
   letter-spacing: 1px;
   /* 移除阴影、边框和背景色 */
@@ -330,9 +338,10 @@
 }
 
 .sticker-hero-subtitle {
-  font-family: 'Comic Sans MS', 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Comic Sans MS', 'Fredoka One','Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.5rem;
-  transform: rotate(1deg);
+  font-weight: 500;
+  transform: rotate(0deg);
   display: inline-block;
   margin-top: 0.5rem;
 }
@@ -933,7 +942,7 @@ body:has([title*="文"]):after {
 }
 
 [lang="en"] * {
-  font-family: "Comic Sans MS", "Comic Sans", sans-serif;
+  font-family: "Comic Sans MS", "Comic Sans", sans-serif, 'Fredoka One';
 }
 
 /* 贴纸风格头像 */
