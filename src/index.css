@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 添加字体声明 */
+@font-face {
+  font-family: 'Comic Sans MS';
+  src: url('/fonts/Comic Sans MS.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* 确保字体加载时的良好体验 */
+}
 
 @layer base {
   html {
@@ -860,33 +868,6 @@ body:has([title*="文"]):after {
   font-family: inherit;
 }
 
-/* 确保项目描述中的中文使用微软雅黑 
-html:lang(zh) .prose,
-html[lang="zh"] .prose,
-html[lang="zh-cn"] .prose,
-html:lang(zh) .sticker-showcase,
-html[lang="zh"] .sticker-showcase,
-html[lang="zh-cn"] .sticker-showcase,
-html:lang(zh) .sticker-detail-card,
-html[lang="zh"] .sticker-detail-card,
-html[lang="zh-cn"] .sticker-detail-card {
-  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
-}
-
-/* 使用更强的选择器覆盖详情页中的文本 
-html:lang(zh) .prose *,
-html[lang="zh"] .prose *,
-html[lang="zh-cn"] .prose * {
-  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
-}
-
-/* 确保 dangerouslySetInnerHTML 渲染的内容也使用正确的字体 
-html:lang(zh) [dangerouslySetInnerHTML],
-html[lang="zh"] [dangerouslySetInnerHTML],
-html[lang="zh-cn"] [dangerouslySetInnerHTML] {
-  font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体', sans-serif !important;
-}
-*/
 /* About页面特定样式 */
 .about-content {
   max-width: none;
