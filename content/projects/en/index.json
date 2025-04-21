@@ -1,6 +1,5 @@
 {
-  "projects": 
-  [
+  "projects": [
     "Chinese Calligraphy Visualization", 
     "Carbon Neutrality", 
     "Annual Running Data Tracker", 
@@ -9,7 +8,12 @@
     "Minimalism Challenge", 
     "Exchange Rate Changes", 
     "Information Visualization", 
-    "50 Best Cities"
+    "50 Years of China's Space Program",
+    "Every Vote Counts: The American Presidential Election",
+    "Rhino Poaching in South Africa",
+    "Consumer Spending by Generation",
+    "Super Typhoon Lekima",
+    "Mobile Games: The Largest Gaming Platform since 2015"
   ],
   "lastUpdated": "2025-04-15"
 }
