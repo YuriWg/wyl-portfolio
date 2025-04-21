@@ -26,7 +26,7 @@ interface ProjectFiltersProps {
 
 // 筛选器选项的 i18n keys (确保与 common.json 文件一致！)
 // 根据截图 zh/common.json (Image 6) 定义
-const CATEGORY_KEYS = ['pkm', 'society', 'culture', 'life' , 'other'];
+const CATEGORY_KEYS = ['pkm', 'society', 'culture', 'life' ,'technology', 'other'];
 const TOOL_KEYS = ['tableau', 'd3', 'python', 'obsidian', 'other'];
 
 const ProjectFilters: React.FC<ProjectFiltersProps> = ({

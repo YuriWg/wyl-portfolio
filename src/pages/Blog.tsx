@@ -111,7 +111,7 @@ const Blog: React.FC = () => {
                 >
                   {/* 左侧图片区域 */}
                   {post.image && (
-                    <div className="md:w-1/3 h-48 md:h-auto overflow-hidden flex-shrink-0 rounded-xl shadow-sm">
+                    <div className="md:w-1/3 aspect-square overflow-hidden flex-shrink-0 rounded-xl shadow-sm">
                       <img 
                         src={post.image} 
                         alt={post.title} 

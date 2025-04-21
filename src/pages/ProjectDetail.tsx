@@ -10,7 +10,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/markdown.css';
 import { getAssetPath } from '../utils/pathUtils';
-// 移除 import { getProjectFileName } from '../data/projectMapping';
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();

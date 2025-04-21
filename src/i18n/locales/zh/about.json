@@ -1,38 +1,27 @@
 {
   "backToHome": "返回首页",
-  "name": "你的名字",
-  "title": "数据可视化设计师 & 开发者",
+  "name": "王毓丽 (Yuli Wang)",
+  "title": "数据探索者 | AI 应用实践者 | 可视化开发者",
   "aboutMe": "关于我",
-  "bio": "我是一名专注于数据可视化和交互式故事叙述的设计师和开发者。我热衷于将复杂的数据转化为直观、引人入胜的视觉体验。",
-  "skills": "技能",
-  "skill1": "数据可视化设计",
-  "skill2": "Tableau, D3.js, Python",
-  "skill3": "交互式故事叙述",
-  "skill4": "数据分析与处理",
-  "experience": "工作经历",
-  "job1": {
-    "title": "高级数据可视化设计师",
-    "company": "某公司",
-    "period": "2020 - 至今",
-    "description": "负责设计和开发交互式数据可视化作品，为客户提供数据洞察和故事叙述解决方案。"
-  },
-  "job2": {
-    "title": "数据分析师",
-    "company": "某公司",
-    "period": "2018 - 2020",
-    "description": "负责数据收集、清洗和分析，为业务决策提供数据支持。"
-  },
+  "bio": "你好！我是王毓丽 (Yuli Wang)。拥有近9年数据领域经验，我对探索数据叙事、构建智能数据应用充满热情。我专注于将复杂数据转化为富有洞察力的可视化作品和高效的数据解决方案。目前，我正积极探索 AI/ML 技术在数据处理、知识管理和自动化流程中的应用，并热衷于通过技术解决实际问题。欢迎查看我的项目实践！",
+  "skills": "核心能力",
+  "skill1": "数据工程 & 分析 (Python, SQL, 数据管道/ETL, 数据建模)",
+  "skill2": "数据可视化 (Tableau, Streamlit, D3.js 交互应用)",
+  "skill3": "AI/ML 应用 (LLM - NLP/RAG, GenAI 实践)",
+  "skill4": "Web 开发 & 云 (React, TypeScript, API 集成, 云部署基础)",
+
   "education": "教育背景",
   "education1": {
-    "degree": "数据科学",
-    "school": "某大学",
-    "period": "2016 - 2018"
+    "degree": "地理信息科学 (GIS)",
+    "school": "浙江农林大学",
+    "period": "2009 - 2013"
   },
+  
   "interest": "兴趣",
-  "interest1": "徒步",
-  "interest2": "阅读",
+  "interest1": "阅读",
+  "interest2": "徒步",
   "interest3": "跑步",
-  "interest4": "书法",
+  "interest4": "摄影",
   "officialAccount": "微信公众号",
   "scanWeChatQRCode": "请扫描二维码关注"
 }

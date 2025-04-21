@@ -1,38 +1,27 @@
 {
   "backToHome": "Back to Home",
-  "name": "Yuli Wang",
-  "title": "Data Visualization Designer & Developer",
+  "name": "Yuli Wang (王毓丽)",
+  "title": "Data Explorer | AI Application Practitioner | Visualization Developer",
   "aboutMe": "About Me",
-  "bio": "I am a designer and developer focused on data visualization and interactive storytelling. I am passionate about transforming complex data into intuitive, engaging visual experiences.",
-  "skills": "Skills",
-  "skill1": "Data Visualization Design",
-  "skill2": "Tableau, D3.js, Python",
-  "skill3": "Interactive Storytelling",
-  "skill4": "Data Analysis & Processing",
-  "experience": "Experience",
-  "job1": {
-    "title": "Senior Data Visualization Designer",
-    "company": "Company Name",
-    "period": "2020 - Present",
-    "description": "Responsible for designing and developing interactive data visualizations, providing data insights and storytelling solutions for clients."
-  },
-  "job2": {
-    "title": "Data Analyst",
-    "company": "Company Name",
-    "period": "2018 - 2020",
-    "description": "Responsible for data collection, cleaning, and analysis to support business decisions."
-  },
+  "bio": "Hello! I'm Yuli Wang. With nearly 9 years of experience in the data field, I'm passionate about exploring data storytelling and building intelligent data applications. I focus on transforming complex data into insightful visualizations and efficient data solutions. Currently, I'm actively exploring the application of AI/ML technologies in data processing, knowledge management, and automated workflows, and I'm enthusiastic about solving practical problems through technology. Feel free to check out my projects!",
+  "skills": "Core Competencies",
+  "skill1": "Data Engineering & Analysis (Python, SQL, Data Pipelines/ETL, Data Modeling)",
+  "skill2": "Data Visualization (Tableau, Streamlit, D3.js Interactive Apps)",
+  "skill3": "AI/ML Application (LLM - NLP/RAG, GenAI Practice)",
+  "skill4": "Web Development & Cloud (React, TypeScript, API Integration, Cloud Deployment Basics)",
+
   "education": "Education",
   "education1": {
-    "degree": "Master of Data Science",
-    "school": "University Name",
-    "period": "2016 - 2018"
+    "degree": "Geographic Information Science (GIS)",
+    "school": "Zhejiang A&F University",
+    "period": "2009 - 2013"
   },
-  "interest": "Interest",
-  "interest1": "Hiking",
-  "interest2": "Reading",
+  
+  "interest": "Interests",
+  "interest1": "Reading",
+  "interest2": "Hiking",
   "interest3": "Running",
-  "interest4": "Chinese Calligraphy",
-  "officialAccount": "Official WeChat Account",
-  "scanWeChatQRCode": "Please scan the QR code to follow"
+  "interest4": "Photography",
+  "officialAccount": "WeChat Official Account",
+  "scanWeChatQRCode": "Scan QR code to follow"
 }

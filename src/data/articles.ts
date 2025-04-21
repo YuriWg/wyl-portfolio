@@ -1,4 +1,4 @@
-import { getAssetPath } from '../utils/pathUtils';
+
 
 // 修改标签类型定义
 export interface Tag {
@@ -52,6 +52,46 @@ const TAGS = {
 // 更新文章数据内容
 export const articles: ArticleType[] = [
   {
+    id: 4,
+    title: {
+      zh: "Deep Research + Obsidian + MCP = 盘活你的”第二大脑“",
+      en: "Deep Research + Obsidian + MCP = Revitalize Your 'Second Brain'"
+    },
+    excerpt: {
+      zh: "探索如何通过Deep Research、Obsidian和MCP工作流程构建和管理个人知识系统。",
+      en: "Explore how to build and manage a personal knowledge system through Deep Research, Obsidian, and MCP workflow."
+    },
+    date: "2025-04-20",
+    author: "wyl",
+    tags: [TAGS.OBSIDIAN, TAGS.WORKFLOW, TAGS.KNOWLEDGE_GRAPH],
+    image: "https://raw.githubusercontent.com/YuriWg/Obisidian_Pic/main/Picgo/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1.png",
+    externalLink: "https://mp.weixin.qq.com/s/vahLPMxiDMGx_MHAPU2xLA",
+    estimatedReadingTime: {
+      zh: "8分钟",
+      en: "8 minutes"
+    }
+  },
+  {
+    id: 3,
+    title: {
+      zh: "'零经验' 如何让'AI团队'为你搭建个人网站？揭秘人机协作的创造力革命",
+      en: "How to Build a Personal Website with 'AI Team' as a Beginner? Unveiling the Creative Revolution of Human-AI Collaboration"
+    },
+    excerpt: {
+      zh: "分享一段借助'AI团队'从零开始构建个人网站的经历。",
+      en: "Sharing the experience of building a personal website from scratch with the help of an 'AI Team'."
+    },
+    date: "2025-04-15",
+    author: "wyl",
+    tags: [TAGS.AI, TAGS.JAVASCRIPT, TAGS.TUTORIAL],
+    image: "https://raw.githubusercontent.com/YuriWg/Obisidian_Pic/main/Picgo/20250415181014.png",
+    externalLink: "https://mp.weixin.qq.com/s/HK1Vg8n7jp_uKso6cCfCGQ",
+    estimatedReadingTime: {
+      zh: "15分钟",
+      en: "15 minutes"
+    }
+  },
+  {
     id: 1,
     title: {
       zh: "用AI做长文本处理：从电子书到知识图谱的实践之旅",
@@ -61,8 +101,8 @@ export const articles: ArticleType[] = [
       zh: "本文探讨如何利用人工智能技术处理长文本内容，实现从电子书到知识图谱的自动化构建过程。",
       en: "This article discusses how to use artificial intelligence to process long text content and achieve automated construction from e-books to knowledge graphs."
     },
-    date: "2023-05-15",
-    author: "王三三",
+    date: "2024-03-25",
+    author: "wyl",
     tags: [TAGS.KNOWLEDGE_GRAPH, TAGS.AI, TAGS.BEST_PRACTICE],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070",
     externalLink: "https://mp.weixin.qq.com/s/Q6zgYW-SdQhjIChNzYrk-Q",
@@ -82,56 +122,17 @@ export const articles: ArticleType[] = [
       zh: "通过人工智能分析个人笔记库数据，生成一个可视化的心情花园，展示不同时期的情绪变化和知识积累。",
       en: "Analyze personal note library data using artificial intelligence to generate a visualized mood garden showing emotional changes and knowledge accumulation over different periods."
     },
-    date: "2023-06-22",
-    author: "王三三",
+    date: "2024-03-15",
+    author: "wyl",
     tags: [TAGS.AI, TAGS.OBSIDIAN, TAGS.D3],
-    image: "https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?auto=format&fit=crop&q=80&w=2148",
+    image: "https://raw.githubusercontent.com/YuriWg/Obisidian_Pic/main/Picgo/%E5%BF%83%E6%83%85%E8%8A%B1%E5%9B%AD.png",
     externalLink: "https://mp.weixin.qq.com/s/fLbaCahMKiNAOFy2xLv1Eg",
     estimatedReadingTime: {
       zh: "8分钟",
       en: "8 minutes"
     }
   },
-  {
-    id: 3,
-    title: {
-      zh: "D3.js 入门指南",
-      en: "D3.js Beginner's Guide"
-    },
-    excerpt: {
-      zh: "一篇全面的D3.js入门教程，介绍如何使用这个强大的JavaScript库创建交互式数据可视化作品。",
-      en: "A comprehensive beginner's guide to D3.js, introducing how to use this powerful JavaScript library to create interactive data visualizations."
-    },
-    date: "2023-07-10",
-    author: "王三三",
-    tags: [TAGS.D3, TAGS.JAVASCRIPT, TAGS.TUTORIAL],
-    image: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=2070",
-    externalLink: "https://mp.weixin.qq.com/s/Q6zgYW-SdQhjIChNzYrk-Q",
-    estimatedReadingTime: {
-      zh: "15分钟",
-      en: "15 minutes"
-    }
-  },
-  {
-    id: 4,
-    title: {
-      zh: "如何利用AI工具提升数据分析效率",
-      en: "How to Use AI Tools to Improve Data Analysis Efficiency"
-    },
-    excerpt: {
-      zh: "探讨当前最新的AI辅助数据分析工具，以及如何将它们整合到日常工作流程中，提高分析效率。",
-      en: "Exploring the latest AI-assisted data analysis tools and how to integrate them into daily workflows to improve analysis efficiency."
-    },
-    date: "2023-09-05",
-    author: "王三三",
-    tags: [TAGS.AI, TAGS.DATA_ANALYSIS, TAGS.WORKFLOW],
-    image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&q=80&w=2074",
-    externalLink: "https://mp.weixin.qq.com/s/Q6zgYW-SdQhjIChNzYrk-Q",
-    estimatedReadingTime: {
-      zh: "12分钟",
-      en: "12 minutes"
-    }
-  }
+  
 ];
 
 // 本地化文章数据，包括标签
